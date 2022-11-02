@@ -11,18 +11,19 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/public/assets/styles.css" type="text/css" />
-    <title>Spots</title>
+    <title>New Spot</title>
   </head>
   <body>
-    <h1>All Spots</h1>
-
-    <ul>
-      <% for (let spot of spots) { %>
-      <li><a href="/spots/<%= spot._id %>"><%= spot.title %></a></li>
-      <% } %>
-    </ul>
-    <footer>
-      <h2><a href="/spots/new">Add a Spot</a></h2>
-    </footer>
+    <form action="/spots" method="POST">
+      <div>
+        <label for="title">Spot Name: </label>
+        <input type="text" id="title" name="spot[title]" />
+      </div>
+      <div>
+        <label for="location">Spot Location: </label>
+        <input type="text" id="location" name="spot[location]" />
+      </div>
+      <button>Add Spot</button>
+    </form>
   </body>
 </html>

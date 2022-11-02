@@ -26,7 +26,9 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // APP.USE NEEDS
+app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static('public'));
+app.use('/Images', express.static('Images'));
 
 // HOME Route
 app.get('/', (req, res) => {
@@ -37,6 +39,17 @@ app.get('/', (req, res) => {
 app.get('/spots', async (req, res) => {
   const spots = await Spot.find({});
   res.render('spots/index', { spots });
+});
+
+// NEW SPOT Route
+app.get('/spots/new', (req, res) => {
+  res.render('spots/new');
+});
+
+app.post('/spots', async (req, res) => {
+  const spot = new Spot(req.body.spot);
+  await spot.save();
+  res.redirect(`/spots/${spot._id}`);
 });
 
 // SINGLE SPOT Route
