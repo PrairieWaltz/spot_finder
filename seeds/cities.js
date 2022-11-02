@@ -1,0 +1,55 @@
+'use strict';
+
+module.exports = [
+  {
+    title: 'Flat Bar',
+    type: 'Rail',
+    cost: 'Free',
+    description: 'Long flat bar with a great run up',
+    city: 'Waterloo',
+    state: 'IA',
+    longitude: -92.343643,
+    latitude: 42.493469,
+  },
+  {
+    title: 'LES Skatepark',
+    type: 'Park',
+    cost: 'Free',
+    description: 'Great spot right in the city. Lots of everything to skate.',
+    city: 'New York',
+    state: 'NY',
+    longitude: -74.00723,
+    latitude: 40.71305,
+  },
+  {
+    title: 'Weird Ledge',
+    type: 'Street, Ledge',
+    cost: 'Free',
+    description:
+      'Pretty crusty but long and perfect height. Too thin to manual but great for a quick session.',
+    city: 'Arlington',
+    state: 'VA',
+    longitude: -77.1012122,
+    latitude: 38.8385937,
+  },
+  {
+    title: 'Drake Springs Skatepark',
+    type: 'Park',
+    cost: 'Free',
+    description: 'OK in a pinch. Too busy and pretty crusty.',
+    city: 'Sioux Falls',
+    state: 'SD',
+    longitude: -96.63769,
+    latitude: 43.52258,
+  },
+  {
+    title: 'Hollywood High',
+    type: 'Street',
+    cost: 'Free',
+    description: 'Classic spot, built for rippers only.',
+    city: 'Hollywood',
+    state: 'CA',
+    longitude: -118.348311,
+    latitude: 34.091307,
+  },
+];

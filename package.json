@@ -1,0 +1,16 @@
+{
+  "name": "spot_finder",
+  "version": "1.0.0",
+  "description": "CRUD app to post, review, update and delete your favorite skate spots worldwide. Interact with other skater posting their favorites. ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "prairieWaltz",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "mongoose": "^6.7.0"
+  }
+}
