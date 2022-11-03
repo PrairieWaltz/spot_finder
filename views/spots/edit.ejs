@@ -15,9 +15,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/public/assets/styles.css" />
-    <title>New Spot</title>
+    <title>Edit Spot</title>
   </head>
   <body>
+    <h1><%= spot.title %></h1>
+    <h2><%= spot.location %></h2>
     <form action="/spots" method="POST">
       <div>
         <label for="title">Spot Name: </label>
@@ -27,7 +29,8 @@
         <label for="location">Spot Location: </label>
         <input type="text" id="location" name="spot[location]" />
       </div>
-      <button>Add Spot</button>
+      <button>Edit Spot</button>
     </form>
+    <a href="/spots/<%= spot._id %>">Back to Spot</a>
   </body>
 </html>

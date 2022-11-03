@@ -58,6 +58,11 @@ app.get('/spots/:id', async (req, res) => {
   res.render('spots/show', { spot });
 });
 
+app.get('/spots/:id/edit', async (req, res) => {
+  const spot = await Spot.findById(req.params.id);
+  res.render('spots/edit', { spot });
+});
+
 // Serving on
 app.listen(3000, () => {
   console.log('Loud & Clear on PORT 3000');

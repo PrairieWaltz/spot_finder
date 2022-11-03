@@ -5,9 +5,44 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+/* NAVIGATION */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e7e0b5ad;
+  z-index: 10000;
+  width: 100%;
+  position: fixed;
+}
+
+.logo {
+  width: 12%;
+  margin: 0.75rem 3rem;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-around;
+  color: #003049;
+}
+
+nav ul a {
+  text-decoration: none;
+  font-size: 1.25rem;
+  color: #003049;
+  cursor: pointer;
+}
+
+nav li {
+  margin-right: 4rem;
+  text-decoration: none;
+}
+
 /* LANDING PAGE IMAGE & OVERLAY */
 .background {
-  background-image: url(https://images.unsplash.com/photo-1557348983-4420fa0606df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80);
+  background-image: url(/Images/ledgeAltered3.png);
   width: 100%;
   height: 100vh;
   background-size: cover;
@@ -17,10 +52,10 @@ body {
 }
 
 .background .overlay {
-  background-color: hsl(0, 80%, 2%);
+  background-color: hsl(0, 0%, 0%);
   width: 100%;
   height: 100%;
-  opacity: 0.65;
+  opacity: 0.45;
 }
 
 /* LANDING PAGE CONTROLS */
@@ -37,19 +72,31 @@ body {
 
 /* LANDING PAGE TEXT */
 .hero-text {
-  margin: 0rem 0rem 10rem 0rem;
+  margin: 10rem 0rem 10rem 0rem;
 }
 
 .hero-text h1 {
-  font-size: 4rem;
+  font-size: 8rem;
+  color: #eeead6;
+  text-align: center;
+  margin-top: -4rem;
+}
+
+.hero-text h1 span {
+  font-size: 7rem;
+}
+
+.hero-text h3 {
+  font-size: 3rem;
   color: #eeead6;
   text-align: center;
 }
 
 .hero-text p {
-  font-size: 2rem;
-  color: #eeead6;
+  font-size: 2.5rem;
+  color: #eae2b7;
   text-align: center;
+  margin-top: -4rem;
 }
 
 /* LANDING PAGE BUTTONS */
@@ -60,8 +107,8 @@ body {
 }
 
 .hero-button1 {
-  width: 120px;
-  height: 40px;
+  width: 8rem;
+  height: 2.5rem;
   background-color: #fcbf49;
   border-radius: 25px;
   cursor: pointer;
@@ -73,7 +120,7 @@ body {
 .hero-button1 a {
   font-size: 1.5rem;
   text-decoration: none;
-  color: rgb(44, 40, 40);
+  color: #003049;
   margin-top: 1rem;
 }
 
@@ -84,11 +131,12 @@ body {
 
 .hero-button1 a:hover {
   transition: 0.3s;
+  color: #eae2b7;
 }
 
 .hero-button2 {
-  width: 120px;
-  height: 40px;
+  width: 8rem;
+  height: 2.5rem;
   border: 1px solid #c9ada7;
   /* background-color: #c9ada7; */
   border-radius: 25px;
@@ -102,7 +150,7 @@ body {
 .hero-button2 a {
   font-size: 1.5rem;
   text-decoration: none;
-  color: whitesmoke;
+  color: #eae2b7;
   margin-top: 1rem;
 }
 
@@ -112,5 +160,34 @@ body {
 }
 
 .hero-button2 a:hover {
+  transition: 0.5s;
+}
+
+.hero-button3 {
+  width: 10rem;
+  height: 2.5rem;
+  border: 1px solid #c9ada7;
+  /* background-color: #c9ada7; */
+  border-radius: 25px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.8rem;
+  margin-top: 0.4rem;
+  margin-left: 1rem;
+}
+
+.hero-button3 a {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #eae2b7;
+  margin-top: 1rem;
+}
+
+.hero-button3:hover {
+  background-color: #f77f00;
+  transition: 0.5s;
+}
+
+.hero-button3 a:hover {
   transition: 0.5s;
 }
