@@ -4,6 +4,7 @@ const { clearCache } = require('ejs');
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 const Spot = require('./models/spot');
 
 // Mongoose Connections
@@ -26,6 +27,9 @@ app.set('views', path.join(__dirname, 'views'));
 
 // APP.USE NEEDS
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
+
+// STATIC APP ROUTES
 app.use('/public', express.static('public'));
 app.use('/Images', express.static('Images'));
 
@@ -57,9 +61,24 @@ app.get('/spots/:id', async (req, res) => {
   res.render('spots/show', { spot });
 });
 
+// SINGLE SPOT EDIT Route
 app.get('/spots/:id/edit', async (req, res) => {
   const spot = await Spot.findById(req.params.id);
   res.render('spots/edit', { spot });
+});
+
+// UPDATE EDITED SPOT PUT Route
+app.put('/spots/:id', async (req, res) => {
+  const { id } = req.params;
+  const spot = await Spot.findByIdAndUpdate(id, { ...req.body.spot });
+  res.redirect(`/spots/${spot._id}`);
+});
+
+// SINGLE SPOT DELETE Route
+app.delete('/spots/:id', async (req, res) => {
+  const { id } = req.params;
+  await Spot.findByIdAndDelete(id);
+  res.redirect('/spots');
 });
 
 // Serving on

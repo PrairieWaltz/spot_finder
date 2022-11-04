@@ -26,6 +26,11 @@
         <a href="/spots">Back to All</a>
         <a href="/spots/<%= spot._id %>/edit">Edit Spot</a>
       </div>
+      <div class="delete-button">
+        <form action="/spots/<%= spot._id %>?_method=DELETE" method="POST">
+          <button>Delete Spot</button>
+        </form>
+      </div>
     </section>
   </body>
 </html>
