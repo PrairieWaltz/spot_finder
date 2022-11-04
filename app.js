@@ -4,6 +4,7 @@ const { clearCache } = require('ejs');
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
 const Spot = require('./models/spot');
 
@@ -22,6 +23,7 @@ db.once('open', () => {
 const app = express();
 
 // VIEW ENGINE
+app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 

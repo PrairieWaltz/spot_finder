@@ -1,37 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/8a592e980d.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/public/assets/styles.css" />
-    <title>New Spot</title>
-  </head>
-  <body>
-    <section class="new-section">
-      <div class="new-main">
-        <form action="/spots" method="POST">
-          <div>
-            <label for="title">Spot Name: </label>
-            <input type="text" id="title" name="spot[title]" />
-          </div>
-          <div>
-            <label for="location">Spot Location: </label>
-            <input type="text" id="location" name="spot[location]" />
-          </div>
-          <button>Add Spot</button>
-        </form>
-      </div>
-    </section>
-  </body>
-</html>
+<% layout('layouts/boilerplate') %>
+
+<section class="new-section">
+  <div class="new-main">
+    <div class="new-text">
+      <h1>Add a Spot</h1>
+    </div>
+    <div class="new-form">
+      <form action="/spots" method="POST">
+        <div>
+          <label for="title">Spot Name: </label>
+          <input type="text" id="title" name="spot[title]" />
+        </div>
+        <div>
+          <label for="location">Spot Location: </label>
+          <input type="text" id="location" name="spot[location]" />
+        </div>
+        <button>Add Spot</button>
+      </form>
+    </div>
+  </div>
+</section>
