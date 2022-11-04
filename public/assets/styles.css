@@ -1,4 +1,4 @@
-body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -72,14 +72,15 @@ nav li {
 
 /* LANDING PAGE TEXT */
 .hero-text {
-  margin: 10rem 0rem 10rem 0rem;
+  margin-top: 3.5rem;
+  margin-right: 22rem;
 }
 
 .hero-text h1 {
   font-size: 8rem;
   color: #eeead6;
   text-align: center;
-  margin-top: -4rem;
+  margin-top: 0rem;
 }
 
 .hero-text h1 span {
@@ -96,7 +97,7 @@ nav li {
   font-size: 2.5rem;
   color: #eae2b7;
   text-align: center;
-  margin-top: -4rem;
+  margin-top: 2rem;
 }
 
 /* LANDING PAGE BUTTONS */
@@ -190,4 +191,83 @@ nav li {
 
 .hero-button3 a:hover {
   transition: 0.5s;
+}
+
+/* INDEX SECTION  */
+
+.index-main {
+  padding: 1rem 0rem 1rem 3rem;
+  height: 100vh;
+}
+
+.index-main h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-decoration: underline;
+  text-decoration-color: #00476d;
+  color: #003049;
+}
+
+.index-list ul li {
+  list-style: none;
+}
+
+.index-list li a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #d62828;
+}
+
+.add-button {
+  text-align: center;
+}
+
+.add-button1 {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  border: 1px solid #003049;
+  border-radius: 4rem;
+  width: 8.75rem;
+}
+
+.add-button2 {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  border: 1px solid #003049;
+  border-radius: 4rem;
+  width: 8.75rem;
+}
+
+.add-button1 a {
+  text-decoration: none;
+  margin: 0.75rem;
+  color: #003049;
+}
+
+.add-button2 a {
+  text-decoration: none;
+  margin: 0.75rem;
+  color: #003049;
+}
+
+/* SHOW SECTION */
+
+.show-section {
+  margin-top: 2rem;
+  margin-left: 3rem;
+}
+
+/* EDIT SECTION */
+
+.edit-main {
+  padding: 2rem 0rem 2rem 3rem;
+  height: 100vh;
+  /* border: 1px solid black; */
+}
+
+/* NEW SECTION */
+
+.new-main {
+  padding: 2rem 0rem 2rem 3rem;
+  height: 100vh;
 }

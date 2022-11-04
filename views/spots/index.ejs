@@ -18,15 +18,22 @@
     <title>Spots</title>
   </head>
   <body>
-    <h1>All Spots</h1>
+    <section class="index-section" id="index-section">
+      <div class="index-main">
+        <h1 class="index-text">All Spots</h1>
 
-    <ul>
-      <% for (let spot of spots) { %>
-      <li><a href="/spots/<%= spot._id %>"><%= spot.title %></a></li>
-      <% } %>
-    </ul>
-    <footer>
-      <h2><a href="/spots/new">Add a Spot</a></h2>
-    </footer>
+        <div class="index-list">
+          <ul>
+            <% for (let spot of spots) { %>
+            <li><a href="/spots/<%= spot._id %>"><%= spot.title %></a></li>
+            <% } %>
+          </ul>
+        </div>
+        <div class="add-button">
+          <h2 class="add-button1"><a href="/spots/new">Add a Spot</a></h2>
+          <h2 class="add-button2"><a href="/">Home</a></h2>
+        </div>
+      </div>
+    </section>
   </body>
 </html>

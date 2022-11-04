@@ -18,16 +18,20 @@
     <title>New Spot</title>
   </head>
   <body>
-    <form action="/spots" method="POST">
-      <div>
-        <label for="title">Spot Name: </label>
-        <input type="text" id="title" name="spot[title]" />
+    <section class="new-section">
+      <div class="new-main">
+        <form action="/spots" method="POST">
+          <div>
+            <label for="title">Spot Name: </label>
+            <input type="text" id="title" name="spot[title]" />
+          </div>
+          <div>
+            <label for="location">Spot Location: </label>
+            <input type="text" id="location" name="spot[location]" />
+          </div>
+          <button>Add Spot</button>
+        </form>
       </div>
-      <div>
-        <label for="location">Spot Location: </label>
-        <input type="text" id="location" name="spot[location]" />
-      </div>
-      <button>Add Spot</button>
-    </form>
+    </section>
   </body>
 </html>

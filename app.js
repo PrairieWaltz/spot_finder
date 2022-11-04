@@ -5,7 +5,6 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const Spot = require('./models/spot');
-const spot = require('./models/spot');
 
 // Mongoose Connections
 mongoose.connect('mongodb://localhost:27017/spot-finder', {
