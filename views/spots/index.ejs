@@ -7,22 +7,41 @@
 
   <div class="index-main">
     <div class="index-column-1">
-      <h1 class="index-text">Newest Spots</h1>
-      <div class="add-button">
-        <h2 class="add-button1"><a href="/spots/new">Add a Spot</a></h2>
-        <h2 class="add-button2"><a href="/">Home</a></h2>
+      <div class="index-text">
+        <div class="index-text-main">
+          <h1>Newest Spots</h1>
+        </div>
+        <div class="add-button">
+          <h2 class="add-button1"><a href="/spots/new">Add a Spot</a></h2>
+          <h2 class="add-button2"><a href="/">Home</a></h2>
+        </div>
       </div>
     </div>
+
     <div class="index-column-2">
       <div class="index-list">
         <ul>
           <% for (let spot of spots) { %>
+
           <li>
-            <a href="/spots/<%= spot._id %>"
-              ><%= spot.title %> <br />
-              <span><%= spot.location %></span></a
-            >
+            <div class="index-list-image">
+              <img src="/Images/gap_mid_1.jpg" alt="" />
+            </div>
+
+            <h2><%= spot.title %></h2>
+            <p>
+              <%= spot.location %> -
+              <a href="/spots/<%= spot._id %>">View Spot</a>
+            </p>
+            <div class="index-list-text">
+              <p class="index-description">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Consequuntur laudantium quasi perferendis non eaque fuga
+                aspernatur.
+              </p>
+            </div>
           </li>
+
           <% } %>
         </ul>
       </div>

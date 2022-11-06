@@ -2,35 +2,41 @@
 
 <section class="edit-section" id="edit-section">
   <div class="edit-main">
-    <div class="edit-text">
-      <h1><%= spot.title %></h1>
-      <h2><%= spot.location %></h2>
-    </div>
-    <div class="edit-form">
-      <form action="/spots/<%= spot._id %>?_method=PUT" method="POST">
-        <div>
-          <label for="title">Spot Name: </label>
-          <input
-            type="text"
-            id="title"
-            name="spot[title]"
-            value="<%= spot.title %>"
-          />
-        </div>
-        <div>
-          <label for="location">Spot Location: </label>
-          <input
-            type="text"
-            id="location"
-            name="spot[location]"
-            value="<%= spot.location %>"
-          />
-        </div>
-        <button class="edit-button">Update Spot</button>
-      </form>
-    </div>
-    <div class="edit-home-button">
-      <a href="/spots/<%= spot._id %>">Back to Spot</a>
+    <div class="edit-column-1">
+      <div class="edit-text">
+        <h1><%= spot.title %></h1>
+        <h2><%= spot.location %></h2>
+      </div>
+      <div class="edit-image">
+        <img src="/Images/landscapeAltered1.png" alt="" />
+      </div>
+
+      <div class="edit-form">
+        <form action="/spots/<%= spot._id %>?_method=PUT" method="POST">
+          <div>
+            <label for="title">Spot Name: </label>
+            <input
+              type="text"
+              id="title"
+              name="spot[title]"
+              value="<%= spot.title %>"
+            />
+          </div>
+          <div>
+            <label for="location">Spot Location: </label>
+            <input
+              type="text"
+              id="location"
+              name="spot[location]"
+              value="<%= spot.location %>"
+            />
+          </div>
+          <button class="edit-button">Update Spot</button>
+        </form>
+      </div>
+      <div class="edit-home-button">
+        <a href="/spots/<%= spot._id %>">Back to Spot</a>
+      </div>
     </div>
   </div>
 </section>
