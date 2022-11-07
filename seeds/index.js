@@ -25,7 +25,8 @@ const seedDB = async () => {
     const random5 = Math.floor(Math.random() * 5);
     const spot = new Spot({
       location: `${cities[random5].city}, ${cities[random5].state}`,
-      title: `${sample(descriptors)} ${sample(places)}`,
+      title: `${cities[random5].title}`,
+      description: `${cities[random5].description}`,
     });
     await spot.save();
   }

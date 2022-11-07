@@ -2,17 +2,23 @@
 
 <section class="show-section">
   <div class="show-main">
-    <h1><%= spot.title %></h1>
-    <h2><%= spot.location %></h2>
-
-    <div class="show-buttons">
-      <a href="/spots">Back to All</a>
-      <a href="/spots/<%= spot._id %>/edit">Edit Spot</a>
-    </div>
-    <div class="show-delete-form">
-      <form action="/spots/<%= spot._id %>?_method=DELETE" method="POST">
-        <button class="show-delete-button">Delete Spot</button>
-      </form>
+    <div class="show-card">
+      <div class="show-text">
+        <h1><%= spot.title %></h1>
+        <h2><%= spot.location %></h2>
+      </div>
+      <div class="show-image">
+        <img src="/Images/landscapeAltered1.png" alt="" />
+      </div>
+      <div class="show-buttons">
+        <a href="/spots">Back to All</a>
+        <a href="/spots/<%= spot._id %>/edit">Edit Spot</a>
+        <div class="show-delete-form">
+          <form action="/spots/<%= spot._id %>?_method=DELETE" method="POST">
+            <button class="show-delete-button">Delete Spot</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </section>
