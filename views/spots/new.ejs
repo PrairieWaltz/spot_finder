@@ -16,21 +16,31 @@
         <form action="/spots" method="POST">
           <div>
             <label for="title">Spot Name: </label>
-            <input type="text" id="title" name="spot[title]" />
+            <input type="text" id="title" name="spot[title]" size="25" />
           </div>
           <div>
-            <label for="location">Spot Location: </label>
-            <input type="text" id="location" name="spot[location]" />
+            <label class="image-label" for="image">Image Url:</label>
+            <input
+              class="image-imput"
+              type="text"
+              id="image"
+              name="spot[image]"
+              size="27"
+            />
           </div>
           <div class="form-text-area">
             <label for="location">Description: </label>
             <textarea
               name="spot[description]"
               placeholder=""
-              id=""
+              id="description"
               cols="25"
-              rows="3"
+              rows="2"
             ></textarea>
+          </div>
+          <div>
+            <label for="location">Spot Location: </label>
+            <input type="text" id="location" name="spot[location]" size="21" />
           </div>
           <button>Add Spot</button>
         </form>

@@ -5,8 +5,8 @@ const Schema = mongoose.Schema;
 
 const SpotSchema = new Schema({
   title: String,
+  image: String,
   type: String,
-  cost: String,
   description: String,
   location: String,
 });

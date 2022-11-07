@@ -364,7 +364,7 @@ footer h3 {
 /* SHOW SECTION */
 
 .show-main {
-  padding-top: 6rem;
+  padding-top: 3rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -372,8 +372,8 @@ footer h3 {
 }
 
 .show-card {
-  width: 80%;
-  height: 95%;
+  width: 70%;
+  height: 85%;
   background-color: rgba(253, 253, 253, 0.301);
   backdrop-filter: blur(3px);
 }
@@ -404,7 +404,7 @@ footer h3 {
 }
 
 .show-image img {
-  width: 70%;
+  width: 60%;
   margin-bottom: 1rem;
 }
 
@@ -572,7 +572,6 @@ footer h3 {
 .new-container-main {
   display: flex;
   flex-direction: column;
-  align-items: center;
   transform: translate(0%, -165%);
 }
 

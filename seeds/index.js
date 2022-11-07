@@ -27,6 +27,8 @@ const seedDB = async () => {
       location: `${cities[random5].city}, ${cities[random5].state}`,
       title: `${cities[random5].title}`,
       description: `${cities[random5].description}`,
+      image:
+        'https://sportshub.cbsistatic.com/i/r/2020/05/28/1573c82d-344a-43aa-9906-d03551f22650/thumbnail/1200x675/03db8618edc6039b9db21b3d646d31de/venice-beach-skate-park.jpg',
     });
     await spot.save();
   }

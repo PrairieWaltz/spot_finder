@@ -8,7 +8,7 @@
         <h2><%= spot.location %></h2>
       </div>
       <div class="edit-image">
-        <img src="/Images/landscapeAltered1.png" alt="" />
+        <img src="<%= spot.image %>" alt="" />
       </div>
     </div>
     <div class="edit-column-2">
@@ -21,7 +21,28 @@
               id="title"
               name="spot[title]"
               value="<%= spot.title %>"
+              size="25"
             />
+          </div>
+          <div>
+            <label class="image-label" for="image">Image Url:</label>
+            <input
+              class="image-imput"
+              type="text"
+              id="image"
+              name="spot[image]"
+              size="27"
+            />
+          </div>
+          <div class="form-text-area">
+            <label for="location">Description: </label>
+            <textarea
+              name="spot[description]"
+              placeholder=" <%= spot.description %>"
+              id="description"
+              cols="25"
+              rows="2"
+            ></textarea>
           </div>
           <div>
             <label for="location">Spot Location:</label>
@@ -31,16 +52,6 @@
               name="spot[location]"
               value="<%= spot.location %>"
             />
-            <div class="form-text-area">
-              <label for="location">Description: </label>
-              <textarea
-                name="spot[description]"
-                placeholder=" <%= spot.description %>"
-                id="description"
-                cols="25"
-                rows="2"
-              ></textarea>
-            </div>
           </div>
           <button class="edit-button">Update Spot</button>
         </form>
