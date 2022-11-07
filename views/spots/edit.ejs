@@ -10,7 +10,8 @@
       <div class="edit-image">
         <img src="/Images/landscapeAltered1.png" alt="" />
       </div>
-
+    </div>
+    <div class="edit-column-2">
       <div class="edit-form">
         <form action="/spots/<%= spot._id %>?_method=PUT" method="POST">
           <div>
@@ -23,13 +24,23 @@
             />
           </div>
           <div>
-            <label for="location">Spot Location: </label>
+            <label for="location">Spot Location:</label>
             <input
               type="text"
               id="location"
               name="spot[location]"
               value="<%= spot.location %>"
             />
+            <div class="form-text-area">
+              <label for="location">Description: </label>
+              <textarea
+                name="spot[description]"
+                placeholder=" <%= spot.description %>"
+                id="description"
+                cols="25"
+                rows="2"
+              ></textarea>
+            </div>
           </div>
           <button class="edit-button">Update Spot</button>
         </form>

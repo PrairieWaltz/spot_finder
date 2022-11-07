@@ -19,31 +19,13 @@
   </head>
   <body>
     <!-- NAVIGATION -->
-    <section class="navigation">
-      <nav>
-        <img class="logo" src="/Images/Spot Finder Logo 7 (trans).png" alt="" />
-        <ul>
-          <li>
-            <a href="https://twitter.com">
-              <i class="fa-brands fa-twitter"></i>
-            </a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="">Sign-In</a>
-          </li>
-          <li>
-            <a href="">Sign-Up</a>
-          </li>
-          <li>
-            <a href="">Contact</a>
-          </li>
-        </ul>
-      </nav>
-    </section>
+    <%- include('../partials/navbar') %>
     <!-- MAIN -->
     <section class="main">
       <div class="main-body"><%- body %></div>
+    </section>
+    <section class="footer">
+      <div class=""><%- include('../partials/footer') %></div>
     </section>
   </body>
 </html>

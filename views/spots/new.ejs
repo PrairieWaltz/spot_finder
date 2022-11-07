@@ -2,21 +2,39 @@
 
 <section class="new-section">
   <div class="new-main">
-    <div class="new-text">
-      <h1>Add a Spot</h1>
+    <div class="new-background">
+      <div class="new-overlay"></div>
     </div>
-    <div class="new-form">
-      <form action="/spots" method="POST">
-        <div>
-          <label for="title">Spot Name: </label>
-          <input type="text" id="title" name="spot[title]" />
-        </div>
-        <div>
-          <label for="location">Spot Location: </label>
-          <input type="text" id="location" name="spot[location]" />
-        </div>
-        <button>Add Spot</button>
-      </form>
+    <div class="new-ciricle">
+      <img src="/Images/circleBackground.png" alt="" />
+    </div>
+    <div class="new-container-main">
+      <div class="new-text">
+        <h1>Add a Spot</h1>
+      </div>
+      <div class="new-form">
+        <form action="/spots" method="POST">
+          <div>
+            <label for="title">Spot Name: </label>
+            <input type="text" id="title" name="spot[title]" />
+          </div>
+          <div>
+            <label for="location">Spot Location: </label>
+            <input type="text" id="location" name="spot[location]" />
+          </div>
+          <div class="form-text-area">
+            <label for="location">Description: </label>
+            <textarea
+              name="spot[description]"
+              placeholder=""
+              id=""
+              cols="25"
+              rows="3"
+            ></textarea>
+          </div>
+          <button>Add Spot</button>
+        </form>
+      </div>
     </div>
   </div>
 </section>
