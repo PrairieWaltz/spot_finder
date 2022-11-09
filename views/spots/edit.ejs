@@ -29,7 +29,7 @@
             <input
               class="image-imput"
               type="text"
-              id="image"
+              id="edit-image"
               name="spot[image]"
               size="27"
             />
@@ -38,7 +38,7 @@
             <label for="location">Description: </label>
             <textarea
               name="spot[description]"
-              placeholder=" <%= spot.description %>"
+              placeholder=""
               id="description"
               cols="25"
               rows="2"
@@ -62,3 +62,16 @@
     </div>
   </div>
 </section>
+
+<script>
+  function changeContent() {
+    document.getElementById('description').innerText =
+      '<%= spot.description %>';
+  }
+  changeContent();
+
+  function changeImage() {
+    document.getElementById('edit-image').innerText = '<%= spot.image %>';
+  }
+  changeImage();
+</script>
