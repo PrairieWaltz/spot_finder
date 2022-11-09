@@ -32,6 +32,7 @@
               id="edit-image"
               name="spot[image]"
               size="27"
+              value="<%= spot.image %>"
             />
           </div>
           <div class="form-text-area">
@@ -69,9 +70,4 @@
       '<%= spot.description %>';
   }
   changeContent();
-
-  function changeImage() {
-    document.getElementById('edit-image').innerText = '<%= spot.image %>';
-  }
-  changeImage();
 </script>

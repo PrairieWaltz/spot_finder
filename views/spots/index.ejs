@@ -29,13 +29,11 @@
             </div>
 
             <h2><%= spot.title %></h2>
-            <p>
+            <h6 class="index-description"><%= spot.description %></h6>
+            <p class="index-location">
               <%= spot.location %> -
               <a href="/spots/<%= spot._id %>">View Spot</a>
             </p>
-            <div class="index-list-text">
-              <p class="index-description"><%= spot.description %></p>
-            </div>
           </li>
 
           <% } %>
