@@ -13,10 +13,16 @@
         <h1>Add a Spot</h1>
       </div>
       <div class="new-form">
-        <form action="/spots" method="POST">
+        <form action="/spots" method="POST" class="validated-form">
           <div>
             <label for="title">Spot Name: </label>
-            <input type="text" id="title" name="spot[title]" size="25" />
+            <input
+              type="text"
+              id="title"
+              name="spot[title]"
+              size="25"
+              required
+            />
           </div>
           <div>
             <label class="image-label" for="image">Image Url:</label>
@@ -26,6 +32,7 @@
               id="image"
               name="spot[image]"
               size="27"
+              required
             />
           </div>
           <div class="form-text-area">
@@ -36,15 +43,47 @@
               id="description"
               cols="25"
               rows="2"
+              required
             ></textarea>
           </div>
           <div>
             <label for="location">Spot Location: </label>
-            <input type="text" id="location" name="spot[location]" size="21" />
+            <input
+              type="text"
+              id="location"
+              name="spot[location]"
+              size="21"
+              required
+            />
           </div>
-          <button>Add Spot</button>
+          <div class="new-page-buttons">
+            <button>Add Spot</button>
+            <h2 class="new-home-button"><a href="/spots">All Spots</a></h2>
+          </div>
         </form>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  (function () {
+    'use strict';
+    const forms = document.querySelectorAll('.validated-form');
+
+    Array.from(forms).forEach(function (form) {
+      form.addEventListener(
+        'submit',
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add('was-validated');
+        },
+        false
+      );
+    });
+  })();
+</script>
