@@ -1,4 +1,10 @@
 <% layout('layouts/boilerplate') %>
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+  crossorigin="anonymous"
+/>
 
 <section class="new-section">
   <div class="new-main">
@@ -13,27 +19,31 @@
         <h1>Add a Spot</h1>
       </div>
       <div class="new-form">
-        <form action="/spots" method="POST" class="validated-form">
+        <form action="/spots" method="POST" class="needs-validation" novalidate>
           <div>
-            <label for="title">Spot Name: </label>
+            <label for="title" class="form-label">Spot Name: </label>
             <input
               type="text"
               id="title"
               name="spot[title]"
-              size="25"
+              class="form-control"
               required
             />
+            <!-- <div class="valid-feedback">all good here whats next?</div>
+            <div class="invalid-feedback">please choose a spot name</div> -->
           </div>
           <div>
             <label class="image-label" for="image">Image Url:</label>
             <input
-              class="image-imput"
               type="text"
               id="image"
               name="spot[image]"
-              size="27"
+              size="10"
+              class="form-control"
               required
             />
+            <!-- <div class="valid-feedback">all good here whats next?</div>
+            <div class="invalid-feedback">please choose an image</div> -->
           </div>
           <div class="form-text-area">
             <label for="location">Description: </label>
@@ -41,20 +51,26 @@
               name="spot[description]"
               placeholder=""
               id="description"
-              cols="25"
+              cols="10"
               rows="2"
+              class="form-control"
               required
             ></textarea>
+            <!-- <div class="valid-feedback">all good here whats next?</div>
+            <div class="invalid-feedback">please add a spot description</div> -->
           </div>
           <div>
-            <label for="location">Spot Location: </label>
+            <label for="location" class="form-label">Spot Location: </label>
             <input
               type="text"
               id="location"
               name="spot[location]"
-              size="21"
+              size="10"
+              class="form-control"
               required
             />
+            <!-- <div class="valid-feedback">all good here whats next?</div>
+            <div class="invalid-feedback">please choose a spot location</div> -->
           </div>
           <div class="new-page-buttons">
             <button>Add Spot</button>
@@ -66,10 +82,21 @@
   </div>
 </section>
 
+<script
+  src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+  integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+  crossorigin="anonymous"
+></script>
+
 <script>
   (function () {
     'use strict';
-    const forms = document.querySelectorAll('.validated-form');
+    const forms = document.querySelectorAll('.needs-validation');
 
     Array.from(forms).forEach(function (form) {
       form.addEventListener(

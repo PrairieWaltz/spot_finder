@@ -574,7 +574,7 @@ footer h3 {
 }
 
 .new-main img {
-  margin-top: 15rem;
+  margin-top: 29rem;
   width: 35%;
   opacity: 0.85;
 }
@@ -582,7 +582,17 @@ footer h3 {
 .new-container-main {
   display: flex;
   flex-direction: column;
-  transform: translate(0%, -155%);
+  transform: translate(0%, -115%);
+}
+
+.new-form form .valid-feedback {
+  font-size: 0.75rem;
+  color: greenyellow;
+}
+
+.new-form form .invalid-feedback {
+  font-size: 0.75rem;
+  color: #eae2b7;
 }
 
 .new-text h1 {
@@ -590,8 +600,9 @@ footer h3 {
 }
 
 .new-form {
-  padding-top: 1rem;
-  font-size: 1.5rem;
+  margin-left: 35rem;
+  font-size: 1rem;
+  width: 25%;
 }
 
 .new-form form input {
