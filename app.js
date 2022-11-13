@@ -5,6 +5,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
+const catchAsync = require('./utils/catchAsync');
 const methodOverride = require('method-override');
 const Spot = require('./models/spot');
 
@@ -41,46 +42,68 @@ app.get('/', (req, res) => {
 });
 
 // ALL SPOTS Route
-app.get('/spots', async (req, res) => {
-  const spots = await Spot.find({});
-  res.render('spots/index', { spots });
-});
+app.get(
+  '/spots',
+  catchAsync(async (req, res) => {
+    const spots = await Spot.find({});
+    res.render('spots/index', { spots });
+  })
+);
 
 // NEW SPOT Route
 app.get('/spots/new', (req, res) => {
   res.render('spots/new');
 });
 
-app.post('/spots', async (req, res) => {
-  const spot = new Spot(req.body.spot);
-  await spot.save();
-  res.redirect(`/spots/${spot._id}`);
-});
+app.post(
+  '/spots',
+  catchAsync(async (req, res, next) => {
+    const spot = new Spot(req.body.spot);
+    await spot.save();
+    res.redirect(`/spots/${spot._id}`);
+  })
+);
 
 // SINGLE SPOT Route
-app.get('/spots/:id', async (req, res) => {
-  const spot = await Spot.findById(req.params.id);
-  res.render('spots/show', { spot });
-});
+app.get(
+  '/spots/:id',
+  catchAsync(async (req, res) => {
+    const spot = await Spot.findById(req.params.id);
+    res.render('spots/show', { spot });
+  })
+);
 
 // SINGLE SPOT EDIT Route
-app.get('/spots/:id/edit', async (req, res) => {
-  const spot = await Spot.findById(req.params.id);
-  res.render('spots/edit', { spot });
-});
+app.get(
+  '/spots/:id/edit',
+  catchAsync(async (req, res) => {
+    const spot = await Spot.findById(req.params.id);
+    res.render('spots/edit', { spot });
+  })
+);
 
 // UPDATE EDITED SPOT PUT Route
-app.put('/spots/:id', async (req, res) => {
-  const { id } = req.params;
-  const spot = await Spot.findByIdAndUpdate(id, { ...req.body.spot });
-  res.redirect(`/spots/${spot._id}`);
-});
+app.put(
+  '/spots/:id',
+  catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const spot = await Spot.findByIdAndUpdate(id, { ...req.body.spot });
+    res.redirect(`/spots/${spot._id}`);
+  })
+);
 
 // SINGLE SPOT DELETE Route
-app.delete('/spots/:id', async (req, res) => {
-  const { id } = req.params;
-  await Spot.findByIdAndDelete(id);
-  res.redirect('/spots');
+app.delete(
+  '/spots/:id',
+  catchAsync(async (req, res) => {
+    const { id } = req.params;
+    await Spot.findByIdAndDelete(id);
+    res.redirect('/spots');
+  })
+);
+
+app.use((err, req, res, next) => {
+  res.send('Sorry, it looks like something went wrong.');
 });
 
 // Serving on

@@ -61,7 +61,7 @@
               placeholder=""
               id="edit-description"
               cols="25"
-              rows="2"
+              rows="1"
             ></textarea>
             <i class="fas fa-check-circle"></i>
             <i class="fas fa-exclamation-circle"></i>
@@ -115,6 +115,7 @@
     const editSpotnameImage = editSpotImage.value.trim();
     const editSpotnameLocation = editSpotLocation.value.trim();
     const editSpotnameDescription = editSpotDescription.value.trim();
+    const editUpdateButton = document.getElementById('edit-button');
 
     if (editSpotnameTitle === '') {
       setErrorFor(editSpotName, 'Name can not be blank');
@@ -126,18 +127,21 @@
 
     if (editSpotnameImage === '') {
       setErrorFor(editSpotImage, 'Image Url can not be blank');
+      editUpdateButton.disabled = true;
     } else {
       setSuccessFor(editSpotImage, 'Looks Good');
     }
 
     if (editSpotnameLocation === '') {
       setErrorFor(editSpotLocation, 'Location can not be blank');
+      editUpdateButton.disabled = true;
     } else {
       setSuccessFor(editSpotLocation, 'Looks Good');
     }
 
     if (editSpotnameDescription === '') {
       setErrorFor(editSpotDescription, 'Description can not be blank');
+      editUpdateButton.disabled = true;
     } else {
       setSuccessFor(editSpotDescription, 'Looks Good');
     }
