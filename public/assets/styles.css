@@ -450,6 +450,23 @@ footer h3 {
 
 /* EDIT SECTION */
 
+.edit-background {
+  background-image: url(/Images/bowl_landscape_dark_1.jpg);
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  z-index: -1;
+}
+
+.edit-overlay {
+  background-color: hsl(0, 0%, 0%);
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+
 .edit-column-1 {
   display: flex;
   flex-direction: column;
@@ -474,8 +491,10 @@ footer h3 {
   transform: translate(-50%, -50%);
   width: 40%;
   height: 75%;
-  background-color: #f77f00;
-  border-radius: 5px;
+  background: rgba(247, 128, 0, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.7px);
   overflow: hidden;
 }
 
@@ -485,6 +504,7 @@ footer h3 {
 
 .edit-text h1 {
   font-size: 3rem;
+  color: #eae2b7;
 }
 
 .edit-text h2 {
@@ -495,14 +515,12 @@ footer h3 {
 
 .edit-image {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  border: 3px solid #eae2b7;
 }
 
 .edit-image img {
   width: 100%;
-  /* margin-left: 3rem; */
+  height: 100%;
   margin-bottom: 1rem;
 }
 
