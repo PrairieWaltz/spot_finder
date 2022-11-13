@@ -13,19 +13,29 @@
     </div>
     <div class="edit-column-2">
       <div class="edit-form">
-        <form action="/spots/<%= spot._id %>?_method=PUT" method="POST">
-          <div>
-            <label for="title">Spot Name: </label>
+        <form
+          action="/spots/<%= spot._id %>?_method=PUT"
+          method="POST"
+          id="edit-form"
+          class="edit-form"
+        >
+          <div class="form-control-edit">
+            <label for="title">Name: </label>
             <input
               type="text"
-              id="title"
+              id="edit-title"
               name="spot[title]"
               value="<%= spot.title %>"
               size="25"
             />
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small class="small-error">Error</small>
+            <small class="small-success">Looks Good</small>
           </div>
-          <div>
-            <label class="image-label" for="image">Image Url:</label>
+
+          <div class="form-control-edit">
+            <label class="image-label" for="image">Image:</label>
             <input
               class="image-imput"
               type="text"
@@ -34,31 +44,45 @@
               size="27"
               value="<%= spot.image %>"
             />
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small class="small-error">Error</small>
+            <small class="small-success">Looks Good</small>
           </div>
-          <div class="form-text-area">
-            <label for="location">Description: </label>
+
+          <div class="form-control-edit">
+            <label for="location">Description:</label>
             <textarea
               name="spot[description]"
               placeholder=""
-              id="description"
+              id="edit-description"
               cols="25"
               rows="2"
             ></textarea>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small class="small-error">Error</small>
+            <small class="small-success">Looks Good</small>
           </div>
-          <div>
-            <label for="location">Spot Location:</label>
+
+          <div class="form-control-edit">
+            <label for="location">Location:</label>
             <input
               type="text"
-              id="location"
+              id="edit-location"
               name="spot[location]"
               value="<%= spot.location %>"
             />
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small class="small-error">Error</small>
+            <small class="small-success">Looks Good</small>
           </div>
-          <button class="edit-button">Update Spot</button>
+          <div class="edit-page-buttons">
+            <button class="edit-button" id="edit-button">Update Spot</button>
+            <a href="/spots/<%= spot._id %>">Back to Spot</a>
+          </div>
         </form>
-      </div>
-      <div class="edit-home-button">
-        <a href="/spots/<%= spot._id %>">Back to Spot</a>
       </div>
     </div>
   </div>
@@ -66,8 +90,72 @@
 
 <script>
   function changeContent() {
-    document.getElementById('description').innerText =
+    document.getElementById('edit-description').innerText =
       '<%= spot.description %>';
   }
   changeContent();
+
+  const editForm = document.getElementById('edit-form');
+  const editSpotName = document.getElementById('edit-title');
+  const editSpotImage = document.getElementById('edit-image');
+  const editSpotLocation = document.getElementById('edit-location');
+  const editSpotDescription = document.getElementById('edit-description');
+  const editUpdateButton = document.getElementById('edit-button');
+
+  editForm.addEventListener('click', e => {
+    checkInputs();
+  });
+
+  function checkInputs() {
+    const editSpotnameTitle = editSpotName.value.trim();
+    const editSpotnameImage = editSpotImage.value.trim();
+    const editSpotnameLocation = editSpotLocation.value.trim();
+    const editSpotnameDescription = editSpotDescription.value.trim();
+
+    if (editSpotnameTitle === '') {
+      setErrorFor(editSpotName, 'Name can not be blank');
+      editUpdateButton.disabled = true;
+    } else {
+      setSuccessFor(editSpotName, 'Looks Good');
+      editUpdateButton.disabled = false;
+    }
+
+    if (editSpotnameImage === '') {
+      setErrorFor(editSpotImage, 'Image Url can not be blank');
+    } else {
+      setSuccessFor(editSpotImage, 'Looks Good');
+    }
+
+    if (editSpotnameLocation === '') {
+      setErrorFor(editSpotLocation, 'Location can not be blank');
+    } else {
+      setSuccessFor(editSpotLocation, 'Looks Good');
+    }
+
+    if (editSpotnameDescription === '') {
+      setErrorFor(editSpotDescription, 'Description can not be blank');
+    } else {
+      setSuccessFor(editSpotDescription, 'Looks Good');
+    }
+  }
+
+  // add success message inside <small> input
+  function setSuccessFor(input, message) {
+    const formControl = input.parentElement; // parent is .form-control
+    const small = formControl.querySelector('small');
+
+    small.innerText = message;
+    // add error class
+    formControl.className = 'form-control-edit success';
+  }
+
+  // add error message inside <small> input
+  function setErrorFor(input, message) {
+    const formControl = input.parentElement; // parent is .form-control
+    const small = formControl.querySelector('small');
+
+    small.innerText = message;
+    // add success class
+    formControl.className = 'form-control-edit error';
+  }
 </script>

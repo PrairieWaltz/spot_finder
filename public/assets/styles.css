@@ -467,11 +467,16 @@ footer h3 {
   flex-direction: column;
   height: 100vh;
   justify-content: center;
+  align-items: center;
   position: fixed;
-  top: 60%;
+  top: 51%;
   left: 75%;
   transform: translate(-50%, -50%);
-  width: 45%;
+  width: 40%;
+  height: 75%;
+  background-color: #f77f00;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .edit-text {
@@ -502,22 +507,14 @@ footer h3 {
 }
 
 .edit-form {
-  font-size: 2rem;
+  display: inline-block;
   text-align: center;
+  align-items: center;
+  width: 90%;
 }
 
-.edit-form form input {
-  margin: 0.25rem;
-  font-size: 1rem;
-}
-
-.edit-form textarea {
-  font-size: 1rem;
-  color: black;
-}
-
-.edit-form form input h1 {
-  font-size: 1rem;
+.edit-page-buttons {
+  display: block;
 }
 
 .edit-form button {
@@ -527,20 +524,111 @@ footer h3 {
   font-size: 1rem;
   background: none;
   border: 1px solid #003049;
+  cursor: pointer;
 }
 
-.edit-home-button {
+.edit-form .edit-page-buttons a {
+  color: #003049;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: none;
+  border: 1px solid #003049;
+  margin-top: 1rem;
+  text-decoration: none;
+}
+
+.edit-page-buttons {
   margin-top: 1rem;
   text-align: center;
 }
 
-.edit-home-button a {
+.form-control-edit {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-control-edit label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
   color: #003049;
-  border: 1px solid #003049;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  padding: 0.5rem;
-  font-size: 1rem;
+}
+
+.form-control-edit input {
+  border-radius: 4px;
+  font-size: 1.15rem;
+  display: block;
+  width: 100%;
+  padding: 0.25rem;
+  border: 2px solid #003049;
+  text-align: center;
+}
+
+.form-control-edit textarea {
+  border: 2px solid #003049;
+  display: block;
+  text-align: center;
+  align-items: center;
+  border-radius: 4px;
+  font-size: 1.15rem;
+  width: 100%;
+  padding: 0.25rem;
+}
+
+.form-control-edit.success input {
+  border-color: #2ecc71;
+  border-width: 2px;
+}
+
+.form-control-edit.error input {
+  border-color: #e74c3c;
+  border-width: 2px;
+}
+
+.form-control-edit.success textarea {
+  border-color: #2ecc71;
+  border-width: 2px;
+}
+
+.form-control-edit.error textarea {
+  border-color: #e74c3c;
+  border-width: 2px;
+}
+
+.form-control-edit.success i.fa-check-circle {
+  visibility: visible;
+  color: #2ecc71;
+}
+
+.form-control-edit.error i.fa-exclamation-circle {
+  visibility: visible;
+  color: #e74c3c;
+}
+
+.form-control-edit.success .small-success {
+  color: #2ecc71;
+  visibility: visible;
+}
+
+.form-control-edit.error .small-error {
+  color: #e74c3c;
+  visibility: visible;
+}
+
+.form-control-edit i {
+  position: absolute;
+  top: 53px;
+  right: 10px;
+  visibility: hidden;
+}
+
+.form-control-edit small {
+  font-weight: 800;
+  position: absolute;
+  left: 10px;
+  top: 78px;
+  visibility: hidden;
 }
 
 /* NEW SECTION */
@@ -551,7 +639,6 @@ footer h3 {
   height: 100vh;
   background-size: cover;
   background-position: center;
-  /* background-attachment: fixed; */
   position: fixed;
   z-index: -1;
 }
@@ -563,82 +650,156 @@ footer h3 {
   opacity: 0.6;
 }
 
-.new-main {
+.new-page {
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* padding-bottom: 4rem; */
+  align-items: center;
   height: 100vh;
-  color: #eae2b7;
 }
 
-.new-main img {
-  margin-top: 29rem;
-  width: 35%;
-  opacity: 0.85;
+.form-container {
+  background: rgba(248, 248, 246, 0.21);
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 7, 10, 0.5);
+  backdrop-filter: blur(3.9px);
+  width: 40rem;
+  overflow: hidden;
 }
 
-.new-container-main {
-  display: flex;
-  flex-direction: column;
-  transform: translate(0%, -115%);
+.form-container form {
+  padding: 2rem 3rem;
 }
 
-.new-form form .valid-feedback {
-  font-size: 0.75rem;
-  color: greenyellow;
+.header {
+  background: rgba(240, 214, 111, 0.21);
+  border-bottom: 1px solid #fcbf49;
+  padding: 0.5rem 0rem;
 }
 
-.new-form form .invalid-feedback {
-  font-size: 0.75rem;
-  color: #eae2b7;
-}
-
-.new-text h1 {
+.header h2 {
+  margin: 0;
   font-size: 3rem;
-}
-
-.new-form {
-  margin-left: 35rem;
-  font-size: 1rem;
-  width: 25%;
-}
-
-.new-form form input {
-  margin: 0.25rem;
-}
-
-.new-form button {
   color: #eae2b7;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  background: none;
-  border: 1px solid #eae2b7;
-  margin-top: 0.5rem;
-  width: 6rem;
+}
+
+.form-control {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-control label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  color: #eae2b7;
+}
+
+.form-control input {
+  border: 1px solid #fcbf49;
+  border-radius: 4px;
+  font-size: 1.15rem;
+  display: block;
+  width: 100%;
+  padding: 0.25rem;
+  border: 2px solid #003049;
+}
+
+.form-control.success input {
+  border-color: #2ecc71;
+  border-width: 2px;
+}
+
+.form-control.error input {
+  border-color: #e74c3c;
+  border-width: 2px;
+}
+
+.form-control.success textarea {
+  border-color: #2ecc71;
+  border-width: 2px;
+}
+
+.form-control.error textarea {
+  border-color: #e74c3c;
+  border-width: 2px;
+}
+
+.form-control.success i.fa-check-circle {
+  visibility: visible;
+  color: #2ecc71;
+}
+
+.form-control.error i.fa-exclamation-circle {
+  visibility: visible;
+  color: #e74c3c;
+}
+
+.form-control.success .small-success {
+  color: #2ecc71;
+  visibility: visible;
+}
+
+.form-control.error .small-error {
+  color: #e74c3c;
+  visibility: visible;
+}
+
+.form-control textarea {
+  border: 2px solid #003049;
+  display: block;
+  border-radius: 4px;
+  font-size: 1.15rem;
+  width: 100%;
+  padding: 0.25rem;
+}
+
+.form-control ::placeholder {
+  font-size: 0.85rem;
+  color: #003049;
+  padding-left: 0.5rem;
+  font-family: inherit;
+  text-align: center;
+}
+
+.form-control i {
+  position: absolute;
+  top: 53px;
+  right: 10px;
+  visibility: hidden;
+}
+
+.form-control small {
+  font-weight: 800;
+  position: absolute;
+  left: 10px;
+  top: 83px;
+  visibility: hidden;
 }
 
 .new-page-buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  padding-top: 1rem;
 }
 
-.new-home-button {
-  margin-left: 1rem;
-}
-
-.new-home-button a {
+.new-button {
   color: #eae2b7;
-  width: 8rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
   font-size: 1rem;
   background: none;
   border: 1px solid #eae2b7;
-  margin-top: 0.25rem;
+  cursor: pointer;
+  background-color: #f77f00;
+}
+
+.new-back-button {
   text-decoration: none;
-  font-weight: 400;
+  color: #eae2b7;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: none;
+  border: 1px solid #eae2b7;
+  background-color: #f77f00;
 }

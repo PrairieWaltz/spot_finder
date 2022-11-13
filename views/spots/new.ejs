@@ -1,116 +1,145 @@
 <% layout('layouts/boilerplate') %>
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-  crossorigin="anonymous"
-/>
 
-<section class="new-section">
-  <div class="new-main">
-    <div class="new-background">
-      <div class="new-overlay"></div>
-    </div>
-    <div class="new-ciricle">
-      <img src="/Images/circleBackground.png" alt="" />
-    </div>
-    <div class="new-container-main">
-      <div class="new-text">
-        <h1>Add a Spot</h1>
-      </div>
-      <div class="new-form">
-        <form action="/spots" method="POST" class="needs-validation" novalidate>
-          <div>
-            <label for="title" class="form-label">Spot Name: </label>
-            <input
-              type="text"
-              id="title"
-              name="spot[title]"
-              class="form-control"
-              required
-            />
-            <!-- <div class="valid-feedback">all good here whats next?</div>
-            <div class="invalid-feedback">please choose a spot name</div> -->
-          </div>
-          <div>
-            <label class="image-label" for="image">Image Url:</label>
-            <input
-              type="text"
-              id="image"
-              name="spot[image]"
-              size="10"
-              class="form-control"
-              required
-            />
-            <!-- <div class="valid-feedback">all good here whats next?</div>
-            <div class="invalid-feedback">please choose an image</div> -->
-          </div>
-          <div class="form-text-area">
-            <label for="location">Description: </label>
-            <textarea
-              name="spot[description]"
-              placeholder=""
-              id="description"
-              cols="10"
-              rows="2"
-              class="form-control"
-              required
-            ></textarea>
-            <!-- <div class="valid-feedback">all good here whats next?</div>
-            <div class="invalid-feedback">please add a spot description</div> -->
-          </div>
-          <div>
-            <label for="location" class="form-label">Spot Location: </label>
-            <input
-              type="text"
-              id="location"
-              name="spot[location]"
-              size="10"
-              class="form-control"
-              required
-            />
-            <!-- <div class="valid-feedback">all good here whats next?</div>
-            <div class="invalid-feedback">please choose a spot location</div> -->
-          </div>
-          <div class="new-page-buttons">
-            <button>Add Spot</button>
-            <h2 class="new-home-button"><a href="/spots">All Spots</a></h2>
-          </div>
-        </form>
-      </div>
-    </div>
+<div class="new-page">
+  <div class="new-background">
+    <div class="new-overlay"></div>
   </div>
-</section>
 
-<script
-  src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-  crossorigin="anonymous"
-></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
-  integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
-  crossorigin="anonymous"
-></script>
+  <div class="form-container">
+    <div class="header">
+      <h2>Add a New Spot</h2>
+    </div>
+    <form
+      action="/spots"
+      method="POST"
+      class="new-form"
+      id="new-form"
+      onsubmit="return checkInputs()"
+    >
+      <div class="form-control">
+        <label for="title" class="form-label">Name:</label>
+        <input type="text" id="title" name="spot[title]" placeholder="NAME" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small class="small-error">Error</small>
+        <small class="small-success">Looks Good</small>
+      </div>
+
+      <div class="form-control">
+        <label for="image" class="form-label">Image:</label>
+        <input type="text" id="image" name="spot[image]" placeholder="Url" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small class="small-error">Error</small>
+        <small class="small-success">Looks Good</small>
+      </div>
+
+      <div class="form-control">
+        <label for="location" class="form-label">Location: </label>
+        <input
+          type="text"
+          id="location"
+          name="spot[location]"
+          placeholder="CITY, STATE"
+        />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small class="small-error">Error</small>
+        <small class="small-success">Looks Good</small>
+      </div>
+
+      <div class="form-control">
+        <label for="description" class="form-label">Description:</label>
+        <textarea
+          name="spot[description]"
+          id="description"
+          cols="20"
+          rows="1"
+        ></textarea>
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small class="small-error">Error</small>
+        <small class="small-success">Looks Good</small>
+      </div>
+      <div class="new-page-buttons">
+        <button class="new-button" type="submit" id="new-submit">
+          Add Spot
+        </button>
+        <a href="/spots" class="new-back-button">All Spots</a>
+      </div>
+    </form>
+  </div>
+</div>
 
 <script>
-  (function () {
-    'use strict';
-    const forms = document.querySelectorAll('.needs-validation');
+  const form = document.getElementById('new-form');
+  const spotName = document.getElementById('title');
+  const spotImage = document.getElementById('image');
+  const spotLocation = document.getElementById('location');
+  const spotDescription = document.getElementById('description');
+  const submitButton = document.getElementById('new-submit');
 
-    Array.from(forms).forEach(function (form) {
-      form.addEventListener(
-        'submit',
-        function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
+  form.addEventListener('click', e => {
+    checkInputs();
+  });
 
-          form.classList.add('was-validated');
-        },
-        false
-      );
-    });
-  })();
+  function checkInputs() {
+    const spotnameTitle = spotName.value.trim();
+    const spotnameImage = spotImage.value.trim();
+    const spotnameLocation = spotLocation.value.trim();
+    const spotnameDescription = spotDescription.value.trim();
+    const submitButton = document.getElementById('new-submit');
+
+    if (spotnameTitle === '') {
+      setErrorFor(spotName, 'Name can not be blank');
+      submitButton.disabled = true;
+    } else {
+      setSuccessFor(spotName, 'Looks Good');
+      submitButton.disabled = false;
+    }
+
+    if (spotnameImage === '') {
+      setErrorFor(spotImage, 'Image Url can not be blank');
+      submitButton.disabled = true;
+    } else {
+      setSuccessFor(spotImage, 'Looks Good');
+      submitButton.disabled = false;
+    }
+
+    if (spotnameLocation === '') {
+      setErrorFor(spotLocation, 'Location can not be blank');
+      submitButton.disabled = true;
+    } else {
+      setSuccessFor(spotLocation, 'Looks Good');
+      submitButton.disabled = false;
+    }
+
+    if (spotnameDescription === '') {
+      setErrorFor(spotDescription, 'Description can not be blank');
+      submitButton.disabled = true;
+    } else {
+      setSuccessFor(spotDescription, 'Looks Good');
+      submitButton.disabled = false;
+    }
+  }
+
+  // add success message inside <small> input
+  function setSuccessFor(input, message) {
+    const formControl = input.parentElement; // parent is .form-control
+    const small = formControl.querySelector('small');
+
+    small.innerText = message;
+    // add error class
+    formControl.className = 'form-control success';
+  }
+
+  // add error message inside <small> input
+  function setErrorFor(input, message) {
+    const formControl = input.parentElement; // parent is .form-control
+    const small = formControl.querySelector('small');
+
+    small.innerText = message;
+    // add success class
+    formControl.className = 'form-control error';
+  }
 </script>
