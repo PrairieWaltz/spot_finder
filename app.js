@@ -6,6 +6,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const catchAsync = require('./utils/catchAsync');
+const ExpressError = require('./utils/ExpressError');
 const methodOverride = require('method-override');
 const Spot = require('./models/spot');
 
@@ -58,6 +59,7 @@ app.get('/spots/new', (req, res) => {
 app.post(
   '/spots',
   catchAsync(async (req, res, next) => {
+    if (!req.body.spot) throw new ExpressError('Invalid Spot Data', 400);
     const spot = new Spot(req.body.spot);
     await spot.save();
     res.redirect(`/spots/${spot._id}`);
@@ -102,8 +104,15 @@ app.delete(
   })
 );
 
+// GENERAL UNKNOWN ROUTE ERROR HANDLING
+app.all('*', (req, res, next) => {
+  next(new ExpressError('Page Not Found', 404));
+});
+
+// ERROR HANDLING BASIC
 app.use((err, req, res, next) => {
-  res.send('Sorry, it looks like something went wrong.');
+  const { statusCode = 500, message = 'Something went wrong.' } = err;
+  res.status(statusCode).render('error');
 });
 
 // Serving on

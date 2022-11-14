@@ -451,7 +451,7 @@ footer h3 {
 /* EDIT SECTION */
 
 .edit-background {
-  background-image: url(/Images/bowl_landscape_dark_1.jpg);
+  background-image: url(/Images/decks_mid_1.jpg);
   width: 100%;
   height: 100vh;
   background-size: cover;
@@ -494,7 +494,7 @@ footer h3 {
   background: rgba(248, 248, 246, 0.21);
   border-radius: 5px;
   box-shadow: 0 4px 30px rgba(0, 7, 10, 0.5);
-  backdrop-filter: blur(3.9px);
+  backdrop-filter: blur(5.9px);
   overflow: hidden;
 }
 
@@ -536,22 +536,22 @@ footer h3 {
 }
 
 .edit-form button {
-  color: #003049;
+  color: #eae2b7;
   padding: 0.5rem;
   border-radius: 0.5rem;
   font-size: 1rem;
   background: none;
-  border: 1px solid #003049;
+  border: 1px solid #eae2b7;
   cursor: pointer;
 }
 
 .edit-form .edit-page-buttons a {
-  color: #003049;
+  color: #eae2b7;
   padding: 0.5rem;
   border-radius: 0.5rem;
   font-size: 1rem;
   background: none;
-  border: 1px solid #003049;
+  border: 1px solid #eae2b7;
   margin-top: 1rem;
   text-decoration: none;
 }
@@ -570,7 +570,7 @@ footer h3 {
   display: inline-block;
   margin-bottom: 0.5rem;
   font-size: 1.75rem;
-  color: #003049;
+  color: #fcbf49;
 }
 
 .form-control-edit input {
@@ -579,12 +579,12 @@ footer h3 {
   display: block;
   width: 100%;
   padding: 0.25rem;
-  border: 2px solid #003049;
+  border: 2px solid #eae2b7;
   text-align: center;
 }
 
 .form-control-edit textarea {
-  border: 2px solid #003049;
+  border: 2px solid #eae2b7;
   display: block;
   text-align: center;
   align-items: center;
@@ -820,4 +820,65 @@ footer h3 {
   background: none;
   border: 1px solid #eae2b7;
   background-color: #f77f00;
+}
+
+/* ERROR MESSAGE */
+
+.error-background {
+  background-image: url(/Images/boneBreak.png);
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  z-index: -1;
+}
+
+.error-overlay {
+  background-color: hsl(0, 0%, 0%);
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+
+.error-alert-page {
+  padding: 3rem;
+  width: 40%;
+  height: 60%;
+  background: rgba(214, 40, 40, 0.39);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.3px);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  align-items: center;
+  /* border-radius: 8px; */
+  top: 20%;
+  left: 29%;
+}
+
+.error-alert-page h4 {
+  font-size: 3rem;
+  margin: 0.5rem;
+  color: #eae2b7;
+}
+
+.error-alert-page .error-data-1 {
+  font-size: 1.5rem;
+  color: #eae2b7;
+  margin-bottom: 1rem;
+}
+
+.error-alert-page .error-data-sub {
+  font-size: 1.15rem;
+  color: #eae2b7;
+  margin-top: 1rem;
+}
+
+.error-alert-page hr {
+  width: 50%;
+  justify-content: center;
+  align-items: center;
 }
