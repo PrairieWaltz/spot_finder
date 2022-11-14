@@ -5,7 +5,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
-const Joi = require('joi');
+const { spotSchema } = require('./schemas.js');
 const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
 const methodOverride = require('method-override');
@@ -38,6 +38,17 @@ app.use(methodOverride('_method'));
 app.use('/public', express.static('public'));
 app.use('/Images', express.static('Images'));
 
+// JOI VALIDATION
+const validateSpot = (req, res, next) => {
+  const { error } = spotSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map(el => el.message).join(',');
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
+};
+
 // HOME Route
 app.get('/', (req, res) => {
   res.render('home');
@@ -59,21 +70,9 @@ app.get('/spots/new', (req, res) => {
 
 app.post(
   '/spots',
+  validateSpot,
   catchAsync(async (req, res, next) => {
     // if (!req.body.spot) throw new ExpressError('Invalid Spot Data', 400);
-    const spotSchema = Joi.object({
-      spot: Joi.object({
-        title: Joi.string().required(),
-        location: Joi.string().required(),
-        description: Joi.string().required(),
-        image: Joi.string().required(),
-      }).required(),
-    });
-    const { error } = spotSchema.validate(req.body);
-    if (error) {
-      const msg = error.details.map(el => el.message).join(',');
-      throw new ExpressError(msg, 400);
-    }
     const spot = new Spot(req.body.spot);
     await spot.save();
     res.redirect(`/spots/${spot._id}`);
@@ -101,6 +100,7 @@ app.get(
 // UPDATE EDITED SPOT PUT Route
 app.put(
   '/spots/:id',
+  validateSpot,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const spot = await Spot.findByIdAndUpdate(id, { ...req.body.spot });
