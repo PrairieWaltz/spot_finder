@@ -866,8 +866,8 @@ footer h3 {
 
 .error-alert-page {
   padding: 3rem;
-  width: 40%;
-  height: 60%;
+  width: 50%;
+  height: 80%;
   background: rgba(214, 40, 40, 0.39);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -878,8 +878,8 @@ footer h3 {
   position: absolute;
   align-items: center;
   /* border-radius: 8px; */
-  top: 20%;
-  left: 29%;
+  top: 10%;
+  left: 25%;
 }
 
 .error-alert-page h4 {
@@ -889,9 +889,10 @@ footer h3 {
 }
 
 .error-alert-page .error-data-1 {
-  font-size: 1.5rem;
+  font-size: 0.85rem;
   color: #eae2b7;
-  margin-bottom: 1rem;
+  margin: 1rem 0rem;
+  padding: 1rem 1rem;
 }
 
 .error-alert-page .error-data-sub {

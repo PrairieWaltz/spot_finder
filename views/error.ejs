@@ -5,8 +5,8 @@
     <div class="error-overlay"></div>
   </div>
   <div class="error-alert-page">
-    <h4 class="alert-heading">Oops...looks like an Error</h4>
-    <p class="error-data-1">Error Message HERE</p>
+    <h4 class="alert-heading"><%= err.message %></h4>
+    <p class="error-data-1"><%= err.stack %></p>
     <hr />
     <p class="error-data-sub">Another Message HERE</p>
   </div>
