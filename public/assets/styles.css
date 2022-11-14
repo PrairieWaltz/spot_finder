@@ -244,7 +244,7 @@ footer h3 {
   flex-direction: column;
   justify-content: center;
   position: fixed;
-  top: 35%;
+  top: 25%;
   left: 25%;
   transform: translate(-50%, -50%);
 }
@@ -290,7 +290,7 @@ footer h3 {
 .index-list ul li {
   margin: 1rem;
   background: rgba(255, 254, 253, 0.5);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(5px);
   border-radius: 0.25rem;
   padding: 1rem 1.5rem;
 }
@@ -326,35 +326,36 @@ footer h3 {
   font-size: 0.75rem;
   color: #003049;
   border: 1px solid black;
-  border-radius: 1rem;
+  border-radius: 8px;
   padding: 0.4rem;
 }
 
 .add-button {
-  text-decoration: none;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   text-align: center;
-  align-items: center;
+  justify-content: center;
   margin: 0.5rem 1rem;
 }
 
 .add-button1 {
   font-size: 1.25rem;
-  margin-top: 1rem;
+  margin: 1rem;
   border: 1px solid #eae2b7;
-  border-radius: 4rem;
+  border-radius: 10px;
   width: 8.75rem;
   cursor: pointer;
+  padding: 0.25rem;
 }
 
 .add-button2 {
   font-size: 1.25rem;
-  margin-top: 1rem;
+  margin: 1rem;
   border: 1px solid #eae2b7;
-  border-radius: 4rem;
+  border-radius: 10px;
   width: 8.75rem;
   cursor: pointer;
+  padding: 0.25rem;
 }
 
 .add-button1 a {
@@ -371,6 +372,23 @@ footer h3 {
 
 /* SHOW SECTION */
 
+.show-background {
+  background-image: url(/Images/london-park.jpg);
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  z-index: -1;
+}
+
+.show-overlay {
+  background-color: hsla(0, 0%, 0%, 0.568);
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+}
+
 .show-main {
   padding-top: 3rem;
   height: 100vh;
@@ -380,10 +398,13 @@ footer h3 {
 }
 
 .show-card {
-  width: 60%;
-  height: 100vh;
+  width: 50%;
+  height: 85%;
+  top: 4rem;
+  padding: 2rem;
   background-color: rgba(253, 253, 253, 0.301);
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(6px);
+  position: absolute;
 }
 
 .show-text {
@@ -391,17 +412,20 @@ footer h3 {
 }
 
 .show-text h1 {
-  font-size: 3rem;
+  color: #eae2b7;
+  font-size: 2.75rem;
 }
 
 .show-text h2 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   margin-bottom: 0.5rem;
   color: #f77f00;
 }
 
 .show-text h3 {
-  margin-bottom: 0.5rem;
+  color: #eae2b7;
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
 }
 
 .show-image {
@@ -412,7 +436,7 @@ footer h3 {
 }
 
 .show-image img {
-  width: 60%;
+  width: 65%;
   margin-bottom: 1rem;
 }
 
@@ -424,28 +448,27 @@ footer h3 {
 }
 
 .show-buttons a {
-  background-color: #003049;
-  color: #eeead6;
-  text-decoration: none;
-  text-align: center;
-  font-size: 1rem;
-  border: 1px solid #003049;
-  border-radius: 1rem;
+  color: #eae2b7;
   padding: 0.5rem;
-  margin: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  background: none;
+  border: 1px solid #eae2b7;
+  text-decoration: none;
+  margin: 0.5rem;
+  text-align: center;
 }
 
 .show-buttons form button {
-  background-color: #003049;
-  color: #eeead6;
-  text-decoration: none;
-  text-align: center;
-  font-size: 1rem;
-  border: 1px solid #003049;
-  border-radius: 1rem;
+  color: #eae2b7;
   padding: 0.5rem;
-  margin: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  background: none;
+  border: 1px solid #eae2b7;
   cursor: pointer;
+  margin: 0.5rem;
+  text-align: center;
 }
 
 /* EDIT SECTION */
@@ -825,7 +848,7 @@ footer h3 {
 /* ERROR MESSAGE */
 
 .error-background {
-  background-image: url(/Images/boneBreak.png);
+  background-image: url(/Images/focus.jpg);
   width: 100%;
   height: 100vh;
   background-size: cover;
@@ -838,7 +861,7 @@ footer h3 {
   background-color: hsl(0, 0%, 0%);
   width: 100%;
   height: 100%;
-  opacity: 0.6;
+  opacity: 0.4;
 }
 
 .error-alert-page {
