@@ -23,6 +23,7 @@ db.once('open', () => {
   console.log('Database Connected');
 });
 
+// ROUTER SET
 const app = express();
 
 // VIEW ENGINE

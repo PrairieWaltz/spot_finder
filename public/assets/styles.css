@@ -393,22 +393,38 @@ footer h3 {
   padding-top: 3rem;
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .show-card {
-  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
   height: 85%;
-  top: 4rem;
-  padding: 2rem;
+  padding: 1rem;
   background-color: rgba(253, 253, 253, 0.301);
   backdrop-filter: blur(6px);
-  position: absolute;
+  border-radius: 10px;
+}
+
+.show-card-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+  height: 85%;
+  padding: 1rem;
+  background-color: rgba(253, 253, 253, 0.301);
+  backdrop-filter: blur(6px);
+  border-radius: 10px;
 }
 
 .show-text {
   text-align: center;
+  overflow: hidden;
 }
 
 .show-text h1 {
@@ -469,6 +485,76 @@ footer h3 {
   cursor: pointer;
   margin: 0.5rem;
   text-align: center;
+}
+
+.form-control-review {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-control-review label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+  color: #fcbf49;
+}
+
+.form-control-review input {
+  border-radius: 4px;
+  font-size: 1.15rem;
+  display: block;
+  width: 100%;
+  padding: 0.25rem;
+  border: 2px solid #eae2b7;
+  text-align: center;
+}
+
+.form-control-review-rating label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: #fcbf49;
+}
+
+.rating-form-main input[type='range'] {
+  appearance: none;
+  width: 200px;
+  height: 17px;
+  background: rgba(247, 127, 0, 0.6);
+  border-radius: 7px;
+  margin-left: 0.25rem;
+  /* background-size: 70% 100%; */
+  background-repeat: no-repeat;
+  background-image: linear-gradient(#f77f00, #d62828);
+}
+
+.rating-form-main input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+  height: 18px;
+  width: 20px;
+  border-radius: 50%;
+  background: #fcbf49;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  box-shadow: 0 0 5px 0 #555;
+}
+
+.rating-form-main input[type='range']::-webkit-slider-runnable-track {
+  appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+.form-control-review textarea {
+  border: 2px solid #eae2b7;
+  display: block;
+  text-align: center;
+  align-items: center;
+  border-radius: 4px;
+  font-size: 1.15rem;
+  width: 100%;
+  padding: 0.25rem;
 }
 
 /* EDIT SECTION */
