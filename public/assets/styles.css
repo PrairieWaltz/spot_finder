@@ -390,7 +390,6 @@ footer h3 {
 }
 
 .show-main {
-  padding-top: 3rem;
   height: 100vh;
   display: flex;
   flex-direction: row;
@@ -402,29 +401,39 @@ footer h3 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 40%;
+  /* width: 40%;
   height: 85%;
-  padding: 1rem;
+  margin-top: 1rem;
   background-color: rgba(253, 253, 253, 0.301);
   backdrop-filter: blur(6px);
-  border-radius: 10px;
+  border-radius: 10px; */
+  background: rgba(248, 248, 246, 0.21);
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 7, 10, 0.5);
+  backdrop-filter: blur(3.9px);
+  overflow: hidden;
+  width: 38rem;
+  height: 35rem;
 }
 
 .show-card-2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 40%;
+  /* width: 40%;
   height: 85%;
   padding: 1rem;
   background-color: rgba(253, 253, 253, 0.301);
   backdrop-filter: blur(6px);
-  border-radius: 10px;
+  border-radius: 10px; */
 }
 
 .show-text {
+  background: rgba(240, 214, 111, 0.21);
+  border-bottom: 1px solid #fcbf49;
+  padding: 1rem 1rem;
   text-align: center;
-  overflow: hidden;
+  justify-content: flex-start;
 }
 
 .show-text h1 {
@@ -441,7 +450,6 @@ footer h3 {
 .show-text h3 {
   color: #eae2b7;
   font-size: 1.15rem;
-  margin-bottom: 1rem;
 }
 
 .show-image {
@@ -449,10 +457,11 @@ footer h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 1rem;
 }
 
 .show-image img {
-  width: 65%;
+  width: 80%;
   margin-bottom: 1rem;
 }
 
@@ -491,6 +500,50 @@ footer h3 {
   position: relative;
   margin-bottom: 1rem;
 }
+
+.form-container-review {
+  background: rgba(248, 248, 246, 0.21);
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 7, 10, 0.5);
+  backdrop-filter: blur(3.9px);
+  width: 38rem;
+  height: 35rem;
+  overflow: hidden;
+}
+
+.form-container-review form {
+  padding: 2rem 3rem;
+}
+
+.review-heading-text {
+  background: rgba(240, 214, 111, 0.21);
+  border-bottom: 1px solid #fcbf49;
+  padding: 1rem 1rem;
+}
+
+.review-heading-text h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #eae2b7;
+}
+
+.review-heading-text h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #fcbf49;
+}
+
+/* .header {
+  background: rgba(240, 214, 111, 0.21);
+  border-bottom: 1px solid #fcbf49;
+  padding: 0.5rem 0rem;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 3rem;
+  color: #eae2b7;
+} */
 
 .form-control-review label {
   display: inline-block;
@@ -555,6 +608,18 @@ footer h3 {
   font-size: 1.15rem;
   width: 100%;
   padding: 0.25rem;
+}
+
+.review-form-btn {
+  color: #eae2b7;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  background: none;
+  border: 1px solid #eae2b7;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  text-align: center;
 }
 
 /* EDIT SECTION */

@@ -25,16 +25,35 @@
       </div>
     </div>
     <div class="show-card-2">
-      <form action="">
-        <div class="review-form-main form-control-review">
-          <label for="body">Review:</label>
-          <textarea name="review[body]" id="body" cols="30" rows="3"></textarea>
+      <div class="form-container-review">
+        <div class="review-heading-text">
+          <h1>Have you skated this spot?</h1>
+          <h2>Please leave a review below:</h2>
         </div>
-        <div class="rating-form-main form-control-review-rating">
-          <label for="rating">Rating:</label>
-          <input type="range" min="0" max="5" />
-        </div>
-      </form>
+        <form action="">
+          <div class="review-form-main form-control-review">
+            <label for="body">Review:</label>
+            <textarea
+              name="review[body]"
+              id="body"
+              cols="30"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="rating-form-main form-control-review-rating">
+            <label class="rating-form-label" for="rating">Rating:</label>
+            <input
+              class="rating-form-range"
+              type="range"
+              min="0"
+              max="5"
+              name="review[rating]"
+              id="rating"
+            />
+          </div>
+          <button class="review-form-btn">Submit</button>
+        </form>
+      </div>
     </div>
   </div>
 </section>
