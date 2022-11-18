@@ -25,35 +25,112 @@
       </div>
     </div>
     <div class="show-card-2">
-      <div class="form-container-review">
+      <!-- <div class="form-container-review">
         <div class="review-heading-text">
-          <h1>Have you skated this spot?</h1>
-          <h2>Please leave a review below:</h2>
+          <h1>Reviews:</h1>
         </div>
-        <form action="">
-          <div class="review-form-main form-control-review">
-            <label for="body">Review:</label>
-            <textarea
-              name="review[body]"
-              id="body"
-              cols="30"
-              rows="3"
-            ></textarea>
-          </div>
-          <div class="rating-form-main form-control-review-rating">
-            <label class="rating-form-label" for="rating">Rating:</label>
-            <input
-              class="rating-form-range"
-              type="range"
-              min="0"
-              max="5"
-              name="review[rating]"
-              id="rating"
-            />
-          </div>
-          <button class="review-form-btn">Submit</button>
-        </form>
+      </div> -->
+
+      <div class="review-list">
+        <% for(let review of spot.reviews) { %>
+
+        <div class="review-list-group">
+          <p class="reviews-list-rating">Rating: <%= review.rating %></p>
+          <p class="reviews-list-review"><%= review.body %></p>
+          <p class="reviews-list-userName">Added By:</p>
+          <form
+            action="/spots/<%= spot._id %>/reviews/<%= review._id %>?_method=DELETE"
+            method="POST"
+          >
+            <button class="review-delete-button">Delete Review</button>
+          </form>
+        </div>
+
+        <% } %>
       </div>
     </div>
   </div>
+  <div class="show-card-3">
+    <div class="form-container-review">
+      <div class="review-heading-text">
+        <h1>Have you skated this spot?</h1>
+        <h2>Please leave a review below:</h2>
+      </div>
+      <form
+        action="/spots/<%= spot._id %>/reviews"
+        method="POST"
+        class="review-form"
+        id="review-form"
+      >
+        <div class="review-form-main form-control-review">
+          <label for="body">Review:</label>
+          <textarea
+            name="review[body]"
+            id="body"
+            cols="30"
+            rows="10"
+            class="review-form-textarea"
+          ></textarea>
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small class="small-error">Error</small>
+          <small class="small-success">Looks Good</small>
+        </div>
+        <div class="rating-form-main form-control-review-rating">
+          <label class="rating-form-label" for="rating">Rating:</label>
+          <input
+            class="rating-form-range"
+            type="range"
+            min="0"
+            max="5"
+            name="review[rating]"
+            id="rating"
+          />
+        </div>
+        <button class="review-form-btn" id="review-submit-btn">Submit</button>
+      </form>
+    </div>
+  </div>
 </section>
+
+<script>
+  const reviewForm = document.getElementById('review-form');
+  const editSpotReview = document.getElementById('body');
+
+  reviewForm.addEventListener('click', e => {
+    checkInputs();
+  });
+
+  function checkInputs() {
+    const editSpotReviewContent = editSpotReview.value.trim();
+    const reviewSubmitButton = document.getElementById('review-submit-btn');
+
+    if (editSpotReviewContent === '') {
+      setErrorFor(editSpotReview, 'Review can not be blank');
+      reviewSubmitButton.disabled = true;
+    } else {
+      setSuccessFor(editSpotReview, 'Looks Good');
+      reviewSubmitButton.disabled = false;
+    }
+  }
+
+  // add success message inside <small> input
+  function setSuccessFor(input, message) {
+    const formControl = input.parentElement; // parent is .form-control
+    const small = formControl.querySelector('small');
+
+    small.innerText = message;
+    // add error class
+    formControl.className = 'form-control-review success';
+  }
+
+  // add error message inside <small> input
+  function setErrorFor(input, message) {
+    const formControl = input.parentElement; // parent is .form-control
+    const small = formControl.querySelector('small');
+
+    small.innerText = message;
+    // add success class
+    formControl.className = 'form-control-review error';
+  }
+</script>

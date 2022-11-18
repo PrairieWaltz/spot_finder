@@ -5,11 +5,12 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
-const { spotSchema } = require('./schemas.js');
+const { spotSchema, reviewSchema } = require('./schemas.js');
 const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
 const methodOverride = require('method-override');
 const Spot = require('./models/spot');
+const Review = require('./models/review');
 
 // Mongoose Connections
 mongoose.connect('mongodb://localhost:27017/spot-finder', {
@@ -42,6 +43,16 @@ app.use('/Images', express.static('Images'));
 // JOI VALIDATION
 const validateSpot = (req, res, next) => {
   const { error } = spotSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map(el => el.message).join(',');
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
+};
+
+const validateReview = (req, res, next) => {
+  const { error } = reviewSchema.validate(req.body);
   if (error) {
     const msg = error.details.map(el => el.message).join(',');
     throw new ExpressError(msg, 400);
@@ -84,7 +95,7 @@ app.post(
 app.get(
   '/spots/:id',
   catchAsync(async (req, res) => {
-    const spot = await Spot.findById(req.params.id);
+    const spot = await Spot.findById(req.params.id).populate('reviews');
     res.render('spots/show', { spot });
   })
 );
@@ -106,6 +117,31 @@ app.put(
     const { id } = req.params;
     const spot = await Spot.findByIdAndUpdate(id, { ...req.body.spot });
     res.redirect(`/spots/${spot._id}`);
+  })
+);
+
+// SINGLE SPOT REVIEW ROUTE
+app.post(
+  '/spots/:id/reviews',
+  validateReview,
+  catchAsync(async (req, res) => {
+    const spot = await Spot.findById(req.params.id);
+    const review = new Review(req.body.review);
+    spot.reviews.push(review);
+    await review.save();
+    await spot.save();
+    res.redirect(`/spots/${spot._id}`);
+  })
+);
+
+// SINGLE REVIEW DELETE ROUTE
+app.delete(
+  '/spots/:id/reviews/:reviewId',
+  catchAsync(async (req, res) => {
+    const { id, reviewId } = req.params;
+    await Spot.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
+    await Review.findByIdAndDelete(reviewId);
+    res.redirect(`/spots/${id}`);
   })
 );
 

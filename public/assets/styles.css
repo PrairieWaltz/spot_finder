@@ -400,38 +400,47 @@ footer h3 {
 .show-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* width: 40%;
-  height: 85%;
-  margin-top: 1rem;
-  background-color: rgba(253, 253, 253, 0.301);
-  backdrop-filter: blur(6px);
-  border-radius: 10px; */
   background: rgba(248, 248, 246, 0.21);
   border-radius: 5px;
   box-shadow: 0 4px 30px rgba(0, 7, 10, 0.5);
-  backdrop-filter: blur(3.9px);
+  backdrop-filter: blur(4.9px);
   overflow: hidden;
   width: 38rem;
-  height: 35rem;
+  height: 37rem;
 }
 
 .show-card-2 {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* width: 40%;
-  height: 85%;
-  padding: 1rem;
-  background-color: rgba(253, 253, 253, 0.301);
-  backdrop-filter: blur(6px);
-  border-radius: 10px; */
+  background: rgba(248, 248, 246, 0.21);
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 7, 10, 0.5);
+  backdrop-filter: blur(4.9px);
+  width: 38rem;
+  height: 37rem;
+  /* overflow: scroll; */
+}
+
+.show-card-3 {
+  display: flex;
+  flex-direction: column;
+  background: rgba(180, 218, 248, 0.21);
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 7, 10, 0.5);
+  backdrop-filter: blur(6.9px);
+  margin-left: 30%;
+  width: 38rem;
+  height: 37rem;
+  overflow: hidden;
+  z-index: 5000;
+  margin-bottom: 5rem;
 }
 
 .show-text {
   background: rgba(240, 214, 111, 0.21);
   border-bottom: 1px solid #fcbf49;
-  padding: 1rem 1rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
   text-align: center;
   justify-content: flex-start;
 }
@@ -470,13 +479,14 @@ footer h3 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .show-buttons a {
   color: #eae2b7;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   background: none;
   border: 1px solid #eae2b7;
   text-decoration: none;
@@ -488,7 +498,7 @@ footer h3 {
   color: #eae2b7;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   background: none;
   border: 1px solid #eae2b7;
   cursor: pointer;
@@ -501,7 +511,7 @@ footer h3 {
   margin-bottom: 1rem;
 }
 
-.form-container-review {
+/* .form-container-review {
   background: rgba(248, 248, 246, 0.21);
   border-radius: 5px;
   box-shadow: 0 4px 30px rgba(0, 7, 10, 0.5);
@@ -509,20 +519,21 @@ footer h3 {
   width: 38rem;
   height: 35rem;
   overflow: hidden;
-}
+} */
 
 .form-container-review form {
-  padding: 2rem 3rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
 }
 
 .review-heading-text {
   background: rgba(240, 214, 111, 0.21);
   border-bottom: 1px solid #fcbf49;
-  padding: 1rem 1rem;
+  padding: 1.5rem 1rem;
 }
 
 .review-heading-text h1 {
-  margin: 0;
   font-size: 2.5rem;
   color: #eae2b7;
 }
@@ -533,23 +544,24 @@ footer h3 {
   color: #fcbf49;
 }
 
-/* .header {
-  background: rgba(240, 214, 111, 0.21);
-  border-bottom: 1px solid #fcbf49;
-  padding: 0.5rem 0rem;
+.form-control-review {
+  text-align: left;
 }
-
-.header h2 {
-  margin: 0;
-  font-size: 3rem;
-  color: #eae2b7;
-} */
 
 .form-control-review label {
   display: inline-block;
   margin-bottom: 0.5rem;
   font-size: 1.75rem;
   color: #fcbf49;
+}
+
+.review-form-textarea {
+  text-align: left;
+  border-radius: 4px;
+  font-size: 1.15rem;
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+  padding-bottom: 1.15rem;
 }
 
 .form-control-review input {
@@ -559,7 +571,6 @@ footer h3 {
   width: 100%;
   padding: 0.25rem;
   border: 2px solid #eae2b7;
-  text-align: center;
 }
 
 .form-control-review-rating label {
@@ -576,7 +587,6 @@ footer h3 {
   background: rgba(247, 127, 0, 0.6);
   border-radius: 7px;
   margin-left: 0.25rem;
-  /* background-size: 70% 100%; */
   background-repeat: no-repeat;
   background-image: linear-gradient(#f77f00, #d62828);
 }
@@ -599,17 +609,6 @@ footer h3 {
   background: transparent;
 }
 
-.form-control-review textarea {
-  border: 2px solid #eae2b7;
-  display: block;
-  text-align: center;
-  align-items: center;
-  border-radius: 4px;
-  font-size: 1.15rem;
-  width: 100%;
-  padding: 0.25rem;
-}
-
 .review-form-btn {
   color: #eae2b7;
   padding: 0.5rem;
@@ -619,7 +618,106 @@ footer h3 {
   border: 1px solid #eae2b7;
   cursor: pointer;
   margin-top: 0.5rem;
-  text-align: center;
+  /* text-align: center; */
+}
+
+.form-control-review.success input {
+  border-color: #2ecc71;
+  border-width: 2px;
+}
+
+.form-control-review.error input {
+  border-color: #e74c3c;
+  border-width: 2px;
+}
+
+.form-control-review.success textarea {
+  border-color: #2ecc71;
+  border-width: 2px;
+}
+
+.form-control-review.error textarea {
+  border-color: #e74c3c;
+  border-width: 2px;
+}
+
+.form-control-review.success i.fa-check-circle {
+  visibility: visible;
+  color: #2ecc71;
+}
+
+.form-control-review.error i.fa-exclamation-circle {
+  visibility: visible;
+  color: #e74c3c;
+}
+
+.form-control-review.success .small-success {
+  color: #2ecc71;
+  visibility: visible;
+}
+
+.form-control-review.error .small-error {
+  color: #e74c3c;
+  visibility: visible;
+}
+
+.form-control-review i {
+  position: absolute;
+  top: 18%;
+  right: 10px;
+  visibility: hidden;
+}
+
+.form-control-review small {
+  font-weight: 800;
+  position: absolute;
+  left: 10px;
+  top: 90%;
+  visibility: hidden;
+}
+
+.review-list {
+  height: 100%;
+  overflow: auto;
+}
+
+.review-delete-button {
+  color: #003049;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  background: none;
+  border: 1px solid #003049;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.review-list-group {
+  list-style: none;
+  color: #003049;
+  margin: 1rem;
+  background: rgba(255, 254, 253, 0.5);
+  backdrop-filter: blur(5px);
+  border-radius: 0.25rem;
+  padding: 1rem 1.5rem;
+}
+
+.review-list-group p.reviews-list-rating {
+  color: #d62828;
+  padding: 0.25rem;
+  font-size: 1.25rem;
+  border-bottom: 1px solid #e74c3c;
+}
+
+.review-list-group p.reviews-list-review {
+  font-size: 1.5rem;
+  padding: 0.25rem;
+}
+
+.review-list-group p.reviews-list-userName {
+  color: #d62828;
+  padding: 0.25rem;
+  font-size: 1.25rem;
 }
 
 /* EDIT SECTION */
