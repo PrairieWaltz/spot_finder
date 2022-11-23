@@ -28,3 +28,6 @@ $ npm install
 
 # App Status
 In active development
+
+# Estimated Publish Date
+12.15.22
