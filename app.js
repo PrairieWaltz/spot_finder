@@ -5,6 +5,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
+const session = require('express-session');
 const ExpressError = require('./utils/ExpressError');
 const methodOverride = require('method-override');
 
@@ -38,6 +39,18 @@ app.use(methodOverride('_method'));
 // STATIC APP ROUTES
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/Images', express.static('Images'));
+
+const sessionConfig = {
+  secret: 'simplesecret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+    maxAge: 1000 * 60 * 60 * 24 * 14,
+  },
+};
+app.use(session(sessionConfig));
 
 // SPOT ROUTES
 app.use('/spots', spots);
