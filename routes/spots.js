@@ -40,6 +40,7 @@ router.post(
     // if (!req.body.spot) throw new ExpressError('Invalid Spot Data', 400);
     const spot = new Spot(req.body.spot);
     await spot.save();
+    req.flash('success', 'You made a new Spot!!');
     res.redirect(`/spots/${spot._id}`);
   })
 );
@@ -49,6 +50,10 @@ router.get(
   '/:id',
   catchAsync(async (req, res) => {
     const spot = await Spot.findById(req.params.id).populate('reviews');
+    if (!spot) {
+      req.flash('error', 'Sorry, cant find that spot.');
+      return res.redirect('/spots');
+    }
     res.render('spots/show', { spot });
   })
 );
@@ -69,6 +74,7 @@ router.put(
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const spot = await Spot.findByIdAndUpdate(id, { ...req.body.spot });
+    req.flash('success', 'You updated this spot!');
     res.redirect(`/spots/${spot._id}`);
   })
 );
@@ -79,6 +85,7 @@ router.delete(
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Spot.findByIdAndDelete(id);
+    req.flash('success', 'You deleted a spot!');
     res.redirect('/spots');
   })
 );

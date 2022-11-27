@@ -397,6 +397,61 @@ footer h3 {
   justify-content: space-evenly;
 }
 
+.alert {
+  font-size: 2.25rem;
+  background: rgba(247, 127, 0, 0.562);
+  color: #eae2b7;
+  z-index: 20000;
+  text-align: center;
+  padding: 1rem;
+}
+
+.alert button {
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  color: #003049;
+}
+
+.alert button span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+
+.alert button:hover {
+  color: #fcbf49;
+}
+
+.alert-hidden {
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  visibility: hidden;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: all ease-in-out 0.3s;
+}
+
+.alert button:focus {
+  box-shadow: inset 0 0 0 2px var(--border-base);
+}
+
+.show-text h4 {
+  font-size: 2.25rem;
+  color: #d62828;
+  padding: 0.25rem;
+}
+
 .show-card {
   display: flex;
   flex-direction: column;
@@ -404,7 +459,7 @@ footer h3 {
   border-radius: 5px;
   box-shadow: 0 4px 30px rgba(0, 7, 10, 0.5);
   backdrop-filter: blur(4.9px);
-  overflow: hidden;
+  overflow: auto;
   width: 38rem;
   height: 37rem;
 }
@@ -1115,8 +1170,8 @@ footer h3 {
 
 .error-alert-page {
   padding: 3rem;
-  width: 50%;
-  height: 80%;
+  width: 70%;
+  height: 87%;
   background: rgba(214, 40, 40, 0.39);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -1126,22 +1181,24 @@ footer h3 {
   text-align: center;
   position: absolute;
   align-items: center;
-  /* border-radius: 8px; */
-  top: 10%;
-  left: 25%;
+  top: 8%;
+  left: 15%;
+  overflow-wrap: break-word;
+  /* overflow: scroll; */
 }
 
-.error-alert-page h4 {
-  font-size: 3rem;
-  margin: 0.5rem;
+.alert-heading {
   color: #eae2b7;
+  font-size: 1.25rem;
+  width: 80%;
 }
 
 .error-alert-page .error-data-1 {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: #eae2b7;
   margin: 1rem 0rem;
   padding: 1rem 1rem;
+  width: 100%;
 }
 
 .error-alert-page .error-data-sub {
@@ -1151,7 +1208,7 @@ footer h3 {
 }
 
 .error-alert-page hr {
-  width: 50%;
+  width: 80%;
   justify-content: center;
   align-items: center;
 }
