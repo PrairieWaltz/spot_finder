@@ -1,0 +1,71 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="register-main">
+  <div class="register-background">
+    <div class="register-overlay"></div>
+  </div>
+
+  <div class="form-container">
+    <div class="header">
+      <h2>Register</h2>
+    </div>
+    <form
+      action="/register"
+      method="POST"
+      class="register-form"
+      id="register-form"
+      onsubmit="return checkInputs()"
+    >
+      <div class="form-control">
+        <label for="username" class="form-label">Username:</label>
+        <input
+          type="text"
+          id="register-username"
+          name="username"
+          placeholder="username"
+        />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small class="small-error">Error</small>
+        <small class="small-success">Looks Good</small>
+      </div>
+
+      <div class="form-control">
+        <label for="email" class="form-label">Email:</label>
+        <input
+          type="email"
+          id="register-email"
+          name="email"
+          placeholder="email"
+        />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small class="small-error">Error</small>
+        <small class="small-success">Looks Good</small>
+      </div>
+
+      <div class="form-control">
+        <label for="password" class="form-label">Password:</label>
+        <input
+          type="password"
+          id="register-password"
+          name="password"
+          placeholder="pick a good one"
+        />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small class="small-error">Error</small>
+        <small class="small-success">Looks Good</small>
+      </div>
+
+      <div class="new-page-buttons">
+        <button class="new-button" type="submit" id="register-submit">
+          Sign Up
+        </button>
+        <a href="/spots" class="new-back-button">All Spots</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/public/javascript/validateRegisterForms.js"></script>

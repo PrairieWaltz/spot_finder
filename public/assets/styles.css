@@ -1212,3 +1212,48 @@ footer h3 {
   justify-content: center;
   align-items: center;
 }
+
+/* REGISTER */
+
+.register-background {
+  background-image: url(/Images/pushAltered3.png);
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  z-index: -1;
+}
+
+.register-overlay {
+  background-color: hsl(0, 0%, 0%);
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+
+.register-main {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* .register-main form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background: rgba(248, 248, 246, 0.21);
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 7, 10, 0.5);
+  backdrop-filter: blur(3.9px);
+  width: 40rem;
+  overflow: hidden;
+}
+
+.register-main form label {
+  font-size: 2rem;
+  padding: 0.5rem;
+} */

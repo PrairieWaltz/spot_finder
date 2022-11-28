@@ -9,11 +9,15 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const ExpressError = require('./utils/ExpressError');
 const methodOverride = require('method-override');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const User = require('./models/user');
 
-const spots = require('./routes/spots');
-const reviews = require('./routes/reviews');
+const userRoutes = require('./routes/users');
+const spotRoutes = require('./routes/spots');
+const reviewRoutes = require('./routes/reviews');
 
-// Mongoose Connections
+// MONGOOSE
 mongoose.connect('mongodb://localhost:27017/spot-finder', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -25,7 +29,7 @@ db.once('open', () => {
   console.log('Database Connected');
 });
 
-// ROUTER SET
+//
 const app = express();
 
 // VIEW ENGINE
@@ -33,14 +37,15 @@ app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// APP EXTRAS
+//
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
-// STATIC APP ROUTES
+// STATIC ROUTES
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/Images', express.static('Images'));
 
+// SESSION
 const sessionConfig = {
   secret: 'simplesecret',
   resave: false,
@@ -54,6 +59,14 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 app.use(flash());
 
+// PASSPORT Config
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 // FLASH Middlewear
 app.use((req, res, next) => {
   res.locals.success = req.flash('success');
@@ -61,11 +74,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// SPOT ROUTES
-app.use('/spots', spots);
-
-// REVIEW ROUTES
-app.use('/spots/:id/reviews', reviews);
+// ROUTES
+app.use('/', userRoutes);
+app.use('/spots', spotRoutes);
+app.use('/spots/:id/reviews', reviewRoutes);
 
 // HOME Route
 app.get('/', (req, res) => {
