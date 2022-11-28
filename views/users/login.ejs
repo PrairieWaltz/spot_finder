@@ -8,36 +8,22 @@
   <div class="form-container">
     <%- include('../partials/flash') %>
     <div class="header">
-      <h2>Register</h2>
+      <h2>Sign-In</h2>
     </div>
     <form
-      action="/register"
+      action="/login"
       method="POST"
-      class="register-form"
-      id="register-form"
+      class="login-form"
+      id="login-form"
       onsubmit="return checkInputs()"
     >
       <div class="form-control">
         <label for="username" class="form-label">Username:</label>
         <input
           type="text"
-          id="register-username"
+          id="login-username"
           name="username"
-          placeholder="username"
-        />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small class="small-error">Error</small>
-        <small class="small-success">Looks Good</small>
-      </div>
-
-      <div class="form-control">
-        <label for="email" class="form-label">Email:</label>
-        <input
-          type="email"
-          id="register-email"
-          name="email"
-          placeholder="email"
+          placeholder="enter username"
         />
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
@@ -49,9 +35,9 @@
         <label for="password" class="form-label">Password:</label>
         <input
           type="password"
-          id="register-password"
+          id="login-password"
           name="password"
-          placeholder="pick a good one"
+          placeholder="enter password"
         />
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
@@ -60,8 +46,8 @@
       </div>
 
       <div class="new-page-buttons">
-        <button class="new-button" type="submit" id="register-submit">
-          Sign Up
+        <button class="new-button" type="submit" id="login-submit">
+          Sign In
         </button>
         <a href="/spots" class="new-back-button">All Spots</a>
       </div>
@@ -69,4 +55,4 @@
   </div>
 </div>
 
-<script src="/public/javascript/validateRegisterForms.js"></script>
+<script src="/public/javascript/validateLoginForms.js"></script>

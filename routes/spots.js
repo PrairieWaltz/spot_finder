@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
 const { spotSchema } = require('../schemas.js');
+const { isLoggedIn } = require('../middlewear');
 
 const ExpressError = require('../utils/ExpressError');
 const Spot = require('../models/spot');
@@ -29,12 +30,13 @@ router.get(
 );
 
 // NEW SPOT Route
-router.get('/new', (req, res) => {
+router.get('/new', isLoggedIn, (req, res) => {
   res.render('spots/new');
 });
 
 router.post(
   '/',
+  isLoggedIn,
   validateSpot,
   catchAsync(async (req, res, next) => {
     // if (!req.body.spot) throw new ExpressError('Invalid Spot Data', 400);
@@ -61,6 +63,7 @@ router.get(
 // SINGLE SPOT EDIT Route
 router.get(
   '/:id/edit',
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const spot = await Spot.findById(req.params.id);
     res.render('spots/edit', { spot });
@@ -70,6 +73,7 @@ router.get(
 // UPDATE EDITED SPOT PUT Route
 router.put(
   '/:id',
+  isLoggedIn,
   validateSpot,
   catchAsync(async (req, res) => {
     const { id } = req.params;
@@ -82,6 +86,7 @@ router.put(
 // SINGLE SPOT DELETE Route
 router.delete(
   '/:id',
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Spot.findByIdAndDelete(id);
