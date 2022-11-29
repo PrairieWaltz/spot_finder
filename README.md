@@ -12,16 +12,23 @@ HTML | CSS | JavaScript | Express | Node | Mongoose DB
 
 # Dependencies
 #### All Dependencies Used
-
-- EJS
-- EJS-Mate
-- Express
-- Joi
-- Method-Override
-- Mongoose
-- Morgan
-
-To run locally you will need MongoDB local for testing. Mongosh was used for all development. 
+```
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.8",
+    "ejs-mate": "^4.0.0",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "joi": "^17.7.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.7.0",
+    "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^7.1.2"
+  }
+```
+To run locally you will need MongoDB for testing. Mongosh was used for all development. 
 
 # App Status
 In active development
