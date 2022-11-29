@@ -21,10 +21,7 @@ HTML | CSS | JavaScript | Express | Node | Mongoose DB
 - Mongoose
 - Morgan
 
-### :
-```
-$ npm install
-```
+To run locally you will need MongoDB local for testing. Mongosh was used for all development. 
 
 # App Status
 In active development
