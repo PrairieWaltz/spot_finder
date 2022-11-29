@@ -12,13 +12,16 @@ router.get('/register', (req, res) => {
 
 router.post(
   '/register',
-  catchAsync(async (req, res) => {
+  catchAsync(async (req, res, next) => {
     try {
       const { email, username, password } = req.body;
       const user = new User({ email, username });
       const rergisteredUser = await User.register(user, password);
-      req.flash('success', 'Welcome to SpotFinder');
-      res.redirect('/spots');
+      req.login(rergisteredUser, err => {
+        if (err) return next(err);
+        req.flash('success', 'Welcome to SpotFinder');
+        res.redirect('/spots');
+      });
     } catch (e) {
       req.flash('error', e.message);
       res.redirect('/register');
@@ -35,10 +38,13 @@ router.post(
   passport.authenticate('local', {
     failureFlash: true,
     failureRedirect: '/login',
+    keepSessionInfo: true,
   }),
   (req, res) => {
     req.flash('success', 'Welcome Back!');
-    res.redirect('/spots');
+    const redirectUrl = req.session.returnTo;
+    delete req.session.returnTo;
+    res.redirect(redirectUrl || '/spots');
   }
 );
 
