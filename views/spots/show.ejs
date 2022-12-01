@@ -8,22 +8,28 @@
     <div class="show-card">
       <%- include('../partials/flash') %>
       <div class="show-text">
-        <h1><%= spot.title %></h1>
-        <h2><%= spot.location %></h2>
+        <h1 style="display: inline"><%= spot.title %></h1>
+        <h2 style="display: inline">- <%= spot.location %></h2>
         <h3><%= spot.description %></h3>
       </div>
       <div class="show-image">
         <img src="<%= spot.image %>" alt="" />
-        <!-- <p>Created by:</p> -->
       </div>
+      <p class="author-tag">Added by: <%= spot.author.username %></p>
       <div class="show-buttons">
         <a href="/spots">Back to All</a>
-        <a href="/spots/<%= spot._id %>/edit">Edit Spot</a>
-        <div class="show-delete-form">
-          <form action="/spots/<%= spot._id %>?_method=DELETE" method="POST">
-            <button class="show-delete-button">Delete Spot</button>
-          </form>
+        <% if( currentUser && spot.author.equals(currentUser._id)) {%>
+
+        <div class="current-user-buttons">
+          <a href="/spots/<%= spot._id %>/edit">Edit Spot</a>
+          <div class="show-delete-form">
+            <form action="/spots/<%= spot._id %>?_method=DELETE" method="POST">
+              <button class="show-delete-button">Delete Spot</button>
+            </form>
+          </div>
         </div>
+
+        <% } %>
       </div>
     </div>
     <div class="show-card-2">
@@ -34,14 +40,15 @@
           <p class="reviews-list-rating">Rating: <%= review.rating %></p>
           <p class="reviews-list-review"><%= review.body %></p>
           <p class="reviews-list-userName">Added By:</p>
+          <% if( currentUser && spot.author.equals(currentUser._id)) {%>
           <form
             action="/spots/<%= spot._id %>/reviews/<%= review._id %>?_method=DELETE"
             method="POST"
           >
             <button class="review-delete-button">Delete Review</button>
           </form>
+          <% } %>
         </div>
-
         <% } %>
       </div>
     </div>

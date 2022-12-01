@@ -24,6 +24,7 @@ const seedDB = async () => {
   for (let i = 0; i < 6; i++) {
     const random5 = Math.floor(Math.random() * 5);
     const spot = new Spot({
+      author: '6384f0ce69f8222e0d6aa124',
       location: `${cities[random5].city}, ${cities[random5].state}`,
       title: `${cities[random5].title}`,
       description: `${cities[random5].description}`,

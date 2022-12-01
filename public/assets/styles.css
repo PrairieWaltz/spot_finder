@@ -446,21 +446,15 @@ footer h3 {
   box-shadow: inset 0 0 0 2px var(--border-base);
 }
 
-.show-text h4 {
-  font-size: 2.25rem;
-  color: #d62828;
-  padding: 0.25rem;
-}
-
 .show-card {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   background: rgba(248, 248, 246, 0.21);
   border-radius: 5px;
   box-shadow: 0 4px 30px rgba(0, 7, 10, 0.5);
   backdrop-filter: blur(4.9px);
   overflow: auto;
-  width: 38rem;
+  width: 40rem;
   height: 37rem;
 }
 
@@ -500,13 +494,17 @@ footer h3 {
   justify-content: flex-start;
 }
 
+.show-text .title-block {
+  display: inline;
+}
+
 .show-text h1 {
   color: #eae2b7;
   font-size: 2.75rem;
 }
 
 .show-text h2 {
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   margin-bottom: 0.5rem;
   color: #f77f00;
 }
@@ -526,7 +524,14 @@ footer h3 {
 
 .show-image img {
   width: 80%;
-  margin-bottom: 1rem;
+}
+
+.author-tag {
+  color: #eae2b7;
+  font-size: 1rem;
+  text-align: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .show-buttons {
@@ -535,6 +540,13 @@ footer h3 {
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
+}
+
+.current-user-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .show-buttons a {
