@@ -41,6 +41,7 @@ router.post(
   catchAsync(async (req, res, next) => {
     // if (!req.body.spot) throw new ExpressError('Invalid Spot Data', 400);
     const spot = new Spot(req.body.spot);
+    spot.author = req.user._id;
     await spot.save();
     req.flash('success', 'You made a new Spot!!');
     res.redirect(`/spots/${spot._id}`);
@@ -51,7 +52,10 @@ router.post(
 router.get(
   '/:id',
   catchAsync(async (req, res) => {
-    const spot = await Spot.findById(req.params.id).populate('reviews');
+    const spot = await Spot.findById(req.params.id)
+      .populate('reviews')
+      .populate('author');
+    console.log(spot);
     if (!spot) {
       req.flash('error', 'Sorry, cant find that spot.');
       return res.redirect('/spots');
@@ -65,7 +69,16 @@ router.get(
   '/:id/edit',
   isLoggedIn,
   catchAsync(async (req, res) => {
-    const spot = await Spot.findById(req.params.id);
+    const { id } = req.params;
+    const spot = await Spot.findById(id);
+    if (!spot) {
+      req.flash('error', 'Can not find Spot');
+      return res.redirect('/spots');
+    }
+    if (!spot.author.equals(req.user._id)) {
+      req.flash('error', "You don't have permission");
+      return res.redirect(`/spots/${id}`);
+    }
     res.render('spots/edit', { spot });
   })
 );
@@ -77,7 +90,12 @@ router.put(
   validateSpot,
   catchAsync(async (req, res) => {
     const { id } = req.params;
-    const spot = await Spot.findByIdAndUpdate(id, { ...req.body.spot });
+    const spot = await Spot.findById(id);
+    if (!spot.author.equals(req.user._id)) {
+      req.flash('error', "You don't have permission");
+      return res.redirect(`/spots/${id}`);
+    }
+    const spots = await Spot.findByIdAndUpdate(id, { ...req.body.spot });
     req.flash('success', 'You updated this spot!');
     res.redirect(`/spots/${spot._id}`);
   })
