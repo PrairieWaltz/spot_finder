@@ -37,6 +37,9 @@
         <% for(let review of spot.reviews) { %>
 
         <div class="review-list-group">
+          <!-- <p class="starability-result" data-rating="<%= review.rating %>">
+            <%= review.rating %>>
+          </p> -->
           <p class="reviews-list-rating">Rating: <%= review.rating %></p>
           <p class="reviews-list-review"><%= review.body %></p>
           <p class="reviews-list-userName">By: <%= review.author.username %></p>
@@ -68,6 +71,55 @@
         class="review-form"
         id="review-form"
       >
+        <!-- STAR RATING PICKER DISPLAY -->
+        <fieldset class="starability-grow">
+          <legend><h4>Rate this spot:</h4></legend>
+          <input
+            type="radio"
+            id="no-rate"
+            class="input-no-rate"
+            name="review[rating]"
+            value="1"
+            checked
+            aria-label="No rating."
+          />
+          <input
+            type="radio"
+            id="first-rate1"
+            name="review[rating]"
+            value="1"
+          />
+          <label for="first-rate1" title="Terrible">1 star</label>
+          <input
+            type="radio"
+            id="first-rate2"
+            name="review[rating]"
+            value="2"
+          />
+          <label for="first-rate2" title="Not good">2 stars</label>
+          <input
+            type="radio"
+            id="first-rate3"
+            name="review[rating]"
+            value="3"
+          />
+          <label for="first-rate3" title="Average">3 stars</label>
+          <input
+            type="radio"
+            id="first-rate4"
+            name="review[rating]"
+            value="4"
+          />
+          <label for="first-rate4" title="Very good">4 stars</label>
+          <input
+            type="radio"
+            id="first-rate5"
+            name="review[rating]"
+            value="5"
+          />
+          <label for="first-rate5" title="Amazing">5 stars</label>
+        </fieldset>
+
         <div class="review-form-main form-control-review">
           <label for="body">Review:</label>
           <textarea
@@ -82,17 +134,20 @@
           <small class="small-error">Error</small>
           <small class="small-success">Looks Good</small>
         </div>
-        <div class="rating-form-main form-control-review-rating">
+
+        <!-- BASIC RATING SLIDER -->
+        <!-- <div class="rating-form-main form-control-review-rating">
           <label class="rating-form-label" for="rating">Rating:</label>
           <input
             class="rating-form-range"
             type="range"
-            min="0"
+            min="1"
             max="5"
             name="review[rating]"
             id="rating"
           />
-        </div>
+        </div> -->
+
         <button class="review-form-btn" id="review-submit-btn">Submit</button>
       </form>
     </div>

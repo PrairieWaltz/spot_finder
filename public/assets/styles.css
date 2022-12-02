@@ -770,19 +770,20 @@ footer h3 {
 }
 
 .review-list-group p.reviews-list-rating {
-  color: #d62828;
+  color: black;
   padding: 0.25rem;
   font-size: 1.25rem;
   border-bottom: 1px solid #e74c3c;
 }
 
 .review-list-group p.reviews-list-review {
+  /* border-top: 1px solid #eae2b7; */
   font-size: 1.5rem;
   padding: 0.25rem;
 }
 
 .review-list-group p.reviews-list-userName {
-  color: #d62828;
+  color: #9b5103;
   padding: 0.25rem;
   font-size: 1.25rem;
 }

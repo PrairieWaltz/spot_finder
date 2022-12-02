@@ -2,96 +2,29 @@
 
 const express = require('express');
 const router = express.Router();
+const spots = require('../controllers/spots');
 const catchAsync = require('../utils/catchAsync');
 const { isLoggedIn, isAuthor, validateSpot } = require('../middlewear');
 
 const Spot = require('../models/spot');
 
-// ALL SPOTS Route
-router.get(
-  '/',
-  catchAsync(async (req, res, next) => {
-    const spots = await Spot.find({});
-    res.render('spots/index', { spots });
-  })
-);
+// ALL spots and redirect after NEW
+router
+  .route('/')
+  .get(catchAsync(spots.index))
+  .post(isLoggedIn, validateSpot, catchAsync(spots.createNewSpot));
 
-// NEW SPOT Route
-router.get('/new', isLoggedIn, (req, res) => {
-  res.render('spots/new');
-});
+// NEW SPOT Routes
+router.get('/new', isLoggedIn, spots.renderNewForm);
 
-router.post(
-  '/',
-  isLoggedIn,
-  validateSpot,
-  catchAsync(async (req, res, next) => {
-    // if (!req.body.spot) throw new ExpressError('Invalid Spot Data', 400);
-    const spot = new Spot(req.body.spot);
-    spot.author = req.user._id;
-    await spot.save();
-    req.flash('success', 'You made a new Spot!!');
-    res.redirect(`/spots/${spot._id}`);
-  })
-);
+// SHOW, EDIT send and DELETE
+router
+  .route('/:id')
+  .get(catchAsync(spots.showSpot))
+  .put(isLoggedIn, isAuthor, validateSpot, catchAsync(spots.updateEditForm))
+  .delete(isLoggedIn, isAuthor, catchAsync(spots.deleteSpot));
 
-// SINGLE SPOT Route
-router.get(
-  '/:id',
-  catchAsync(async (req, res) => {
-    const spot = await Spot.findById(req.params.id)
-      .populate({ path: 'reviews', populate: { path: 'author' } })
-      .populate('author');
-    // console.log(spot);
-    if (!spot) {
-      req.flash('error', 'Sorry, cant find that spot.');
-      return res.redirect('/spots');
-    }
-    res.render('spots/show', { spot });
-  })
-);
-
-// SINGLE SPOT EDIT Route
-router.get(
-  '/:id/edit',
-  isLoggedIn,
-  isAuthor,
-  catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const spot = await Spot.findById(id);
-    if (!spot) {
-      req.flash('error', 'Can not find Spot');
-      return res.redirect('/spots');
-    }
-    res.render('spots/edit', { spot });
-  })
-);
-
-// UPDATE EDITED SPOT PUT Route
-router.put(
-  '/:id',
-  isLoggedIn,
-  isAuthor,
-  validateSpot,
-  catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const spot = await Spot.findByIdAndUpdate(id, { ...req.body.spot });
-    req.flash('success', 'You updated this spot!');
-    res.redirect(`/spots/${spot._id}`);
-  })
-);
-
-// SINGLE SPOT DELETE Route
-router.delete(
-  '/:id',
-  isLoggedIn,
-  isAuthor,
-  catchAsync(async (req, res) => {
-    const { id } = req.params;
-    await Spot.findByIdAndDelete(id);
-    req.flash('success', 'You deleted a spot!');
-    res.redirect('/spots');
-  })
-);
+// EDIT Spot Routes
+router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(spots.renderEditForm));
 
 module.exports = router;
