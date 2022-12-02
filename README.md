@@ -54,3 +54,4 @@ In active development
 - 11.27.22 -- Flash messaging added to all routes. SUCCESS and ERROR flahes working. Need to be styled. 
 - 11.29.22 -- Redirect to intended page function added. Working for all routes EXCEPT review route. Redirecting to 404 with path  ```/spots/(unique spot_id)/reviews``` need to drop the /reviews return from redirect. Being added due to ```req.session.returnTo = req.originalUrl;```
 line in middlewear. Need to redirect back to spot show page from the review POST button. 
+- 11.30.22 -- Add authentication for all routes (will build middlewear to handle as everything works right). Add SpotAuthor to all actions (new, edit, delete, review). Add author to main show page (will add for reviews next). Re-seeded database to reflect Author changes. Have yet to fix redirect error after user log-in detailed on the 29th. Can't figure it out and trying not to break everything while I fix it. 
