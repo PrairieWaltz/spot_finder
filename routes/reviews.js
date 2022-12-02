@@ -10,18 +10,7 @@ const { reviewSchema } = require('../schemas.js');
 
 const ExpressError = require('../utils/ExpressError');
 const catchAsync = require('../utils/catchAsync');
-const { isLoggedIn } = require('../middlewear');
-
-// JOI Validation
-const validateReview = (req, res, next) => {
-  const { error } = reviewSchema.validate(req.body);
-  if (error) {
-    const msg = error.details.map(el => el.message).join(',');
-    throw new ExpressError(msg, 400);
-  } else {
-    next();
-  }
-};
+const { isLoggedIn, isAuthor, validateReview } = require('../middlewear');
 
 // SINGLE SPOT REVIEW ROUTE
 router.post(
@@ -43,6 +32,7 @@ router.post(
 router.delete(
   '/:reviewId',
   isLoggedIn,
+  isAuthor,
   catchAsync(async (req, res) => {
     const { id, reviewId } = req.params;
     await Spot.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });

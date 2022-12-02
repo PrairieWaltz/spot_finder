@@ -3,22 +3,9 @@
 const express = require('express');
 const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
-const { spotSchema } = require('../schemas.js');
-const { isLoggedIn } = require('../middlewear');
+const { isLoggedIn, isAuthor, validateSpot } = require('../middlewear');
 
-const ExpressError = require('../utils/ExpressError');
 const Spot = require('../models/spot');
-
-// JOI VALIDATION
-const validateSpot = (req, res, next) => {
-  const { error } = spotSchema.validate(req.body);
-  if (error) {
-    const msg = error.details.map(el => el.message).join(',');
-    throw new ExpressError(msg, 400);
-  } else {
-    next();
-  }
-};
 
 // ALL SPOTS Route
 router.get(
@@ -68,16 +55,13 @@ router.get(
 router.get(
   '/:id/edit',
   isLoggedIn,
+  isAuthor,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const spot = await Spot.findById(id);
     if (!spot) {
       req.flash('error', 'Can not find Spot');
       return res.redirect('/spots');
-    }
-    if (!spot.author.equals(req.user._id)) {
-      req.flash('error', "You don't have permission");
-      return res.redirect(`/spots/${id}`);
     }
     res.render('spots/edit', { spot });
   })
@@ -87,15 +71,11 @@ router.get(
 router.put(
   '/:id',
   isLoggedIn,
+  isAuthor,
   validateSpot,
   catchAsync(async (req, res) => {
     const { id } = req.params;
-    const spot = await Spot.findById(id);
-    if (!spot.author.equals(req.user._id)) {
-      req.flash('error', "You don't have permission");
-      return res.redirect(`/spots/${id}`);
-    }
-    const spots = await Spot.findByIdAndUpdate(id, { ...req.body.spot });
+    const spot = await Spot.findByIdAndUpdate(id, { ...req.body.spot });
     req.flash('success', 'You updated this spot!');
     res.redirect(`/spots/${spot._id}`);
   })
@@ -105,6 +85,7 @@ router.put(
 router.delete(
   '/:id',
   isLoggedIn,
+  isAuthor,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Spot.findByIdAndDelete(id);
