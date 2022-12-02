@@ -2,15 +2,12 @@
 
 const express = require('express');
 const router = express.Router({ mergeParams: true });
-
+const { isLoggedIn, validateReview, isReviewAuthor } = require('../middlewear');
 const Spot = require('../models/spot');
 const Review = require('../models/review');
-
 const { reviewSchema } = require('../schemas.js');
-
 const ExpressError = require('../utils/ExpressError');
 const catchAsync = require('../utils/catchAsync');
-const { isLoggedIn, isAuthor, validateReview } = require('../middlewear');
 
 // SINGLE SPOT REVIEW ROUTE
 router.post(
@@ -20,6 +17,7 @@ router.post(
   catchAsync(async (req, res) => {
     const spot = await Spot.findById(req.params.id);
     const review = new Review(req.body.review);
+    review.author = req.user._id;
     spot.reviews.push(review);
     await review.save();
     await spot.save();
@@ -32,7 +30,7 @@ router.post(
 router.delete(
   '/:reviewId',
   isLoggedIn,
-  isAuthor,
+  isReviewAuthor,
   catchAsync(async (req, res) => {
     const { id, reviewId } = req.params;
     await Spot.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });

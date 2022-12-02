@@ -39,8 +39,8 @@
         <div class="review-list-group">
           <p class="reviews-list-rating">Rating: <%= review.rating %></p>
           <p class="reviews-list-review"><%= review.body %></p>
-          <p class="reviews-list-userName">Added By:</p>
-          <% if( currentUser && spot.author.equals(currentUser._id)) {%>
+          <p class="reviews-list-userName">By: <%= review.author.username %></p>
+          <% if( currentUser && review.author.equals(currentUser._id)) {%>
           <form
             action="/spots/<%= spot._id %>/reviews/<%= review._id %>?_method=DELETE"
             method="POST"
@@ -53,6 +53,9 @@
       </div>
     </div>
   </div>
+
+  <% if(currentUser) {%>
+
   <div class="show-card-3">
     <div class="form-container-review">
       <div class="review-heading-text">
@@ -94,6 +97,8 @@
       </form>
     </div>
   </div>
+
+  <% } %>
 </section>
 
 <script src="/public/javascript/validateReviewForms.js"></script>
