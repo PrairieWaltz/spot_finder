@@ -26,7 +26,10 @@
 
           <li>
             <div class="index-list-image">
-              <img src="<%= spot.image %>" alt="" />
+              <% for(let img of spot.images) { %>
+              <img src="<%= img.url %>" alt="" />
+
+              <% } %>
             </div>
 
             <h2><%= spot.title %></h2>

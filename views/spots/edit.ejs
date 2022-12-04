@@ -12,7 +12,10 @@
         <h2><%= spot.location %></h2>
       </div>
       <div class="edit-image">
-        <img src="<%= spot.image %>" alt="" />
+        <% for(let img of spot.images) { %>
+        <img src="<%= img.url %>" alt="" />
+
+        <% } %>
       </div>
     </div>
     <div class="edit-column-2">

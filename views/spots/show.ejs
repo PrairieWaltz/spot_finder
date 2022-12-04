@@ -13,7 +13,10 @@
         <h3><%= spot.description %></h3>
       </div>
       <div class="show-image">
-        <img src="<%= spot.image %>" alt="" />
+        <% for(let img of spot.images) { %>
+        <img src="<%= img.url %>" alt="" />
+
+        <% } %>
       </div>
       <p class="author-tag">Added by: <%= spot.author.username %></p>
       <div class="show-buttons">

@@ -17,8 +17,8 @@ router
   .get(catchAsync(spots.index))
   .post(
     isLoggedIn,
-    validateSpot,
     upload.array('image'),
+    validateSpot,
     catchAsync(spots.createNewSpot)
   );
 
