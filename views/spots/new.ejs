@@ -14,6 +14,7 @@
       method="POST"
       class="new-form"
       id="new-form"
+      enctype="multipart/form-data"
       onsubmit="return checkInputs()"
     >
       <div class="form-control">
@@ -25,14 +26,16 @@
         <small class="small-success">Looks Good</small>
       </div>
 
-      <div class="form-control">
+      <input type="file" name="image" id="" multiple />
+
+      <!-- <div class="form-control">
         <label for="image" class="form-label">Image:</label>
         <input type="text" id="image" name="spot[image]" placeholder="Url" />
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
         <small class="small-error">Error</small>
         <small class="small-success">Looks Good</small>
-      </div>
+      </div> -->
 
       <div class="form-control">
         <label for="location" class="form-label">Location: </label>

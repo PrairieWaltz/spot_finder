@@ -12,8 +12,8 @@ module.exports.renderNewForm = (req, res) => {
 };
 
 module.exports.createNewSpot = async (req, res, next) => {
-  // if (!req.body.spot) throw new ExpressError('Invalid Spot Data', 400);
   const spot = new Spot(req.body.spot);
+  spot.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
   spot.author = req.user._id;
   await spot.save();
   req.flash('success', 'You made a new Spot!!');

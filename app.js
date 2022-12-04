@@ -1,5 +1,9 @@
 'use strict';
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 const { clearCache } = require('ejs');
 const express = require('express');
 const path = require('path');
