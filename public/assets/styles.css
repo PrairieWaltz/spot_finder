@@ -907,6 +907,19 @@ footer h3 {
   margin-bottom: 1rem;
 }
 
+.form-control-edit input::file-selector-button {
+  border: none;
+  border-radius: 5px;
+  background-color: #e6e5e4;
+}
+
+.form-control-edit input.image-input {
+  /* border: 0px solid #eae2b7; */
+  padding-top: 0.5rem;
+  padding-left: 10%;
+  color: #fcbf49;
+}
+
 .form-control-edit label {
   display: inline-block;
   margin-bottom: 0.5rem;

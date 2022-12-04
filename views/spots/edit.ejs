@@ -25,6 +25,7 @@
           method="POST"
           id="edit-form"
           class="edit-form"
+          enctype="multipart/form-data"
         >
           <div class="form-control-edit">
             <label for="title">Name: </label>
@@ -42,19 +43,20 @@
           </div>
 
           <div class="form-control-edit">
-            <label class="image-label" for="image">Image:</label>
-            <input
-              class="image-imput"
-              type="text"
-              id="edit-image"
-              name="spot[image]"
-              size="27"
-              value="<%= spot.image %>"
-            />
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small class="small-error">Error</small>
-            <small class="small-success">Looks Good</small>
+            <label class="image-label" for="image"
+              >Add Images:
+              <input
+                class="image-input"
+                type="file"
+                id="edit-image"
+                name="image"
+                multiple
+              />
+              <i class="fas fa-check-circle"></i>
+              <i class="fas fa-exclamation-circle"></i>
+              <small class="small-error">Error</small>
+              <small class="small-success">Looks Good</small>
+            </label>
           </div>
 
           <div class="form-control-edit">

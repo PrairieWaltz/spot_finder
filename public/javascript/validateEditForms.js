@@ -26,12 +26,13 @@ function checkInputs() {
     editUpdateButton.disabled = false;
   }
 
-  if (editSpotnameImage === '') {
-    setErrorFor(editSpotImage, 'Image Url can not be blank');
-    editUpdateButton.disabled = true;
-  } else {
-    setSuccessFor(editSpotImage, 'Looks Good');
-  }
+  // DISABLED FOR EDIT PAGE ONLY
+  // if (editSpotnameImage === '') {
+  //   setErrorFor(editSpotImage, 'Image Url can not be blank');
+  //   editUpdateButton.disabled = true;
+  // } else {
+  //   setSuccessFor(editSpotImage, 'Looks Good');
+  // }
 
   if (editSpotnameLocation === '') {
     setErrorFor(editSpotLocation, 'Location can not be blank');

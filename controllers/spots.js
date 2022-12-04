@@ -46,6 +46,9 @@ module.exports.renderEditForm = async (req, res) => {
 module.exports.updateEditForm = async (req, res) => {
   const { id } = req.params;
   const spot = await Spot.findByIdAndUpdate(id, { ...req.body.spot });
+  const images = req.files.map(f => ({ url: f.path, filename: f.filename }));
+  spot.images.push(...images);
+  await spot.save();
   req.flash('success', 'You updated this spot!');
   res.redirect(`/spots/${spot._id}`);
 };
