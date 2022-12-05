@@ -14,7 +14,9 @@ HTML | CSS | JavaScript | Express | Node | Mongoose DB
 #### All Dependencies Used
 ```
   "dependencies": {
+    "cloudinary": "^1.32.0",
     "connect-flash": "^0.1.1",
+    "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "ejs-mate": "^4.0.0",
     "express": "^4.18.2",
@@ -23,6 +25,8 @@ HTML | CSS | JavaScript | Express | Node | Mongoose DB
     "method-override": "^3.0.0",
     "mongoose": "^6.7.0",
     "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^7.1.2"
@@ -55,3 +59,7 @@ In active development
 - 11.29.22 -- Redirect to intended page function added. Working for all routes EXCEPT review route. Redirecting to 404 with path  ```/spots/(unique spot_id)/reviews``` need to drop the /reviews return from redirect. Being added due to ```req.session.returnTo = req.originalUrl;```
 line in middlewear. Need to redirect back to spot show page from the review POST button. 
 - 11.30.22 -- Add authentication for all routes (will build middlewear to handle as everything works right). Add SpotAuthor to all actions (new, edit, delete, review). Add author to main show page (will add for reviews next). Re-seeded database to reflect Author changes. Have yet to fix redirect error after user log-in detailed on the 29th. Can't figure it out and trying not to break everything while I fix it. 
+- 12.01.22 -- Refactor all routes. Controllers and Ratings complete. Rating STARS added to post form and by NUMBER added to review list. Auth for rating not complete, will submit 1 star as default. Need to add js to handle rating input. 
+- 12.02.22 -- Cloudinary set up and tested. Using MULTER to parse info for Cloudinary. Added .ENV for all environment variables. Images added to models and parsing to Cloudinary and Mongoose (saving as URL sent from Cloudinary). 
+- 12.03.22 -- Image upload for NEW and EDIT routes working. Cloudinary starage and API working. Mongoose getting URL link for images working. Styles are still temporary and getting more screwed up daily! All routes tested and working. 
+
