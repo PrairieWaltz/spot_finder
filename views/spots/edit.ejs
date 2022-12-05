@@ -59,6 +59,26 @@
             </label>
           </div>
 
+          <div class="form-control-image-edit">
+            <label for="image-edit" class="">Delete Images:</label>
+          </div>
+
+          <div class="edit-images-form">
+            <% spot.images.forEach( (img, i) => { %>
+            <a target="_blank" href="<%=img.url%>">
+              <input
+                type="checkbox"
+                id="image-<%=i%>"
+                class="edit-image-checkbox"
+                name="deleteImages[]"
+                value="<%=img.filename%>"
+              />
+
+              <img src="<%=img.thumbnail%> " alt="" class="edit-image-form" />
+            </a>
+            <% }) %>
+          </div>
+
           <div class="form-control-edit">
             <label for="location">Description:</label>
             <textarea
@@ -87,6 +107,7 @@
             <small class="small-error">Error</small>
             <small class="small-success">Looks Good</small>
           </div>
+
           <div class="edit-page-buttons">
             <button class="edit-button" id="edit-button">Update Spot</button>
             <a href="/spots/<%= spot._id %>">Back to Spot</a>

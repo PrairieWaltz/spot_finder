@@ -1,6 +1,7 @@
 'use strict';
 
 const Spot = require('../models/spot');
+const { cloudinary } = require('../cloudinary');
 
 module.exports.index = async (req, res, next) => {
   const spots = await Spot.find({});
@@ -45,10 +46,24 @@ module.exports.renderEditForm = async (req, res) => {
 
 module.exports.updateEditForm = async (req, res) => {
   const { id } = req.params;
+  // console.log(req.body);
   const spot = await Spot.findByIdAndUpdate(id, { ...req.body.spot });
   const images = req.files.map(f => ({ url: f.path, filename: f.filename }));
   spot.images.push(...images);
   await spot.save();
+
+  if (req.body.deleteImages) {
+    for (let filename of req.body.deleteImages) {
+      await cloudinary.uploader.destroy(filename);
+    }
+    await spot.updateOne({
+      $pull: {
+        images: { filename: { $in: req.body.deleteImages } },
+      },
+    });
+    console.log(spot);
+  }
+
   req.flash('success', 'You updated this spot!');
   res.redirect(`/spots/${spot._id}`);
 };
