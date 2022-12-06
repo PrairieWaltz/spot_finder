@@ -3,7 +3,7 @@
 mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v11',
+  style: 'mapbox://styles/mapbox/dark-v11',
   center: spot.geometry.coordinates,
   zoom: 15,
   projection: 'globe',

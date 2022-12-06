@@ -27,12 +27,12 @@
 
           <li>
             <div class="index-list-image">
-              <% for(let img of spot.images) { %>
-              <img src="<%= img.url %>" alt="" />
-
+              <% if (spot.images.length) { %>
+              <img src="<%= spot.images[0].url %>" alt="" />
+              <% } else {%>
+              <img src="/Images/SFlogoRed.png" alt="" />
               <% } %>
             </div>
-
             <h2><%= spot.title %></h2>
             <h6 class="index-description"><%= spot.description %></h6>
             <p class="index-location">

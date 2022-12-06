@@ -27,7 +27,7 @@ function checkInputs() {
   }
 
   if (spotnameImage === '') {
-    setErrorFor(spotImage, 'Image Url can not be blank');
+    setErrorFor(spotImage, 'Image can not be blank');
     submitButton.disabled = true;
   } else {
     setSuccessFor(spotImage, 'Looks Good');

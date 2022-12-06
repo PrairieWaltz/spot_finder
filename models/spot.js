@@ -13,35 +13,45 @@ ImageSchema.virtual('thumbnail').get(function () {
   return this.url.replace('/upload', '/upload/w_150');
 });
 
-const SpotSchema = new Schema({
-  title: String,
-  images: [ImageSchema],
+const opts = { toJSON: { virtuals: true } };
 
-  geometry: {
-    coordinates: {
-      type: [Number],
-      required: true,
-    },
-    type: {
-      type: String,
-      enum: ['Point'],
-      // required: true,
-    },
-  },
+const SpotSchema = new Schema(
+  {
+    title: String,
+    images: [ImageSchema],
 
-  type: String,
-  description: String,
-  location: String,
-  author: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-  },
-  reviews: [
-    {
+    geometry: {
+      coordinates: {
+        type: [Number],
+        required: true,
+      },
+      type: {
+        type: String,
+        enum: ['Point'],
+        // required: true,
+      },
+    },
+
+    type: String,
+    description: String,
+    location: String,
+    author: {
       type: Schema.Types.ObjectId,
-      ref: 'Review',
+      ref: 'User',
     },
-  ],
+    reviews: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Review',
+      },
+    ],
+  },
+  opts
+);
+
+SpotSchema.virtual('properties.popUpMarkup').get(function () {
+  return `<a href='/spots/${this._id}'>${this.title}<a/>
+  <p>${this.location}</p>`;
 });
 
 SpotSchema.post('findOneAndDelete', async function (doc) {
