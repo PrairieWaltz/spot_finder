@@ -14,6 +14,7 @@ HTML | CSS | JavaScript | Express | Node | Mongoose DB
 #### All Dependencies Used
 ```
   "dependencies": {
+    "@mapbox/mapbox-sdk": "^0.14.0",
     "cloudinary": "^1.32.0",
     "connect-flash": "^0.1.1",
     "dotenv": "^16.0.3",
