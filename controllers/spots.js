@@ -1,6 +1,10 @@
 'use strict';
 
 const Spot = require('../models/spot');
+const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
+const mapboxToken = process.env.MAPBOX_TOKEN;
+const geocoder = mbxGeocoding({ accessToken: mapboxToken });
+
 const { cloudinary } = require('../cloudinary');
 
 module.exports.index = async (req, res, next) => {
@@ -13,7 +17,15 @@ module.exports.renderNewForm = (req, res) => {
 };
 
 module.exports.createNewSpot = async (req, res, next) => {
+  const geoData = await geocoder
+    .forwardGeocode({
+      query: req.body.spot.location,
+      limit: 1,
+    })
+    .send();
+
   const spot = new Spot(req.body.spot);
+  spot.geometry = geoData.body.features[0].geometry;
   spot.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
   spot.author = req.user._id;
   await spot.save();

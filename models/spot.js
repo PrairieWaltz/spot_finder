@@ -16,6 +16,19 @@ ImageSchema.virtual('thumbnail').get(function () {
 const SpotSchema = new Schema({
   title: String,
   images: [ImageSchema],
+
+  geometry: {
+    coordinates: {
+      type: [Number],
+      required: true,
+    },
+    type: {
+      type: String,
+      enum: ['Point'],
+      // required: true,
+    },
+  },
+
   type: String,
   description: String,
   location: String,

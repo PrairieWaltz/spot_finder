@@ -243,8 +243,9 @@ footer h3 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   position: fixed;
-  top: 25%;
+  top: 50%;
   left: 25%;
   transform: translate(-50%, -50%);
 }
@@ -370,6 +371,12 @@ footer h3 {
   color: #eae2b7;
 }
 
+.index-map {
+  width: 700px;
+  height: 400px;
+  /* margin: 4rem; */
+}
+
 /* SHOW SECTION */
 
 .show-background {
@@ -390,6 +397,14 @@ footer h3 {
 }
 
 .show-main {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.show-main-2 {
   height: 100vh;
   display: flex;
   flex-direction: row;
@@ -447,8 +462,6 @@ footer h3 {
 }
 
 .show-card {
-  /* display: flex;
-  flex-direction: column; */
   background: rgba(248, 248, 246, 0.21);
   border-radius: 5px;
   box-shadow: 0 4px 30px rgba(0, 7, 10, 0.5);
@@ -459,30 +472,45 @@ footer h3 {
 }
 
 .show-card-2 {
-  display: flex;
-  flex-direction: column;
   background: rgba(248, 248, 246, 0.21);
   border-radius: 5px;
   box-shadow: 0 4px 30px rgba(0, 7, 10, 0.5);
   backdrop-filter: blur(4.9px);
   width: 38rem;
   height: 37rem;
-  /* overflow: scroll; */
+  overflow: auto;
 }
 
 .show-card-3 {
-  display: flex;
-  flex-direction: column;
   background: rgba(180, 218, 248, 0.21);
   border-radius: 5px;
   box-shadow: 0 4px 30px rgba(0, 7, 10, 0.5);
   backdrop-filter: blur(6.9px);
-  margin-left: 30%;
   width: 38rem;
   height: 37rem;
   overflow: hidden;
   z-index: 5000;
   margin-bottom: 5rem;
+}
+
+.show-card-4 {
+  justify-content: center;
+  align-items: center;
+  background: rgba(180, 218, 248, 0.21);
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 7, 10, 0.5);
+  backdrop-filter: blur(6.9px);
+  width: 38rem;
+  height: 37rem;
+  overflow: hidden;
+  z-index: 5000;
+  margin-bottom: 5rem;
+}
+
+.show-map {
+  width: 500px;
+  height: 300px;
+  margin: 4rem;
 }
 
 .show-text {
@@ -577,16 +605,6 @@ footer h3 {
   position: relative;
   margin-bottom: 1rem;
 }
-
-/* .form-container-review {
-  background: rgba(248, 248, 246, 0.21);
-  border-radius: 5px;
-  box-shadow: 0 4px 30px rgba(0, 7, 10, 0.5);
-  backdrop-filter: blur(3.9px);
-  width: 38rem;
-  height: 35rem;
-  overflow: hidden;
-} */
 
 .form-container-review form {
   margin-top: 1rem;
