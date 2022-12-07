@@ -21,7 +21,9 @@ HTML | CSS | JavaScript | Express | Node | Mongoose DB
     "ejs": "^3.1.8",
     "ejs-mate": "^4.0.0",
     "express": "^4.18.2",
+    "express-mongo-sanitize": "^2.2.0",
     "express-session": "^1.17.3",
+    "helmet": "^6.0.1",
     "joi": "^17.7.0",
     "method-override": "^3.0.0",
     "mongoose": "^6.7.0",
@@ -30,7 +32,8 @@ HTML | CSS | JavaScript | Express | Node | Mongoose DB
     "multer-storage-cloudinary": "^4.0.0",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^7.1.2"
+    "passport-local-mongoose": "^7.1.2",
+    "sanitize-html": "^2.7.3"
   }
 ```
 To run locally you will need MongoDB for testing. Mongosh was used for all development. 
@@ -65,3 +68,4 @@ In active development
 - 12.03.22 -- Image upload for NEW and EDIT routes working. Cloudinary starage and API working. Mongoose getting URL link for images working. Styles are still                       temporary and getting more screwed up daily! All routes tested and working. 
 - 12.04.22 -- All Image Basics complete. upload and delete routes working. Need to circle back and make sure all images are being deleted from Cloudinary on SPOT                     DELETE as well as IMAGE DELETE. Spot Delete currently NOT removing from Cloudinary storage. 
 - 12.05.22 -- Maps added to INDEX and SHOW pages. Connection to populate db data working. PopUps on Single Spot markers working. Cluster map for INDEX working. Need to               style colors and grouping but overall looking OK. Just need to do a final refactor and should have a working Beta up and live ahead of schedule. 
+- 12.06.22 -- Added dependencies to deal with xss, CSP and Mongo injection. All routes covered with basic security. Need to hunt for leaks. Ready to prep for initial                 deploy. 
