@@ -6,8 +6,14 @@
   </div>
   <div class="error-alert-page">
     <h4 class="alert-heading"><%= err.message %></h4>
+
+    <% if (process.env.NODE_ENV !== 'production') { %>
     <p class="error-data-1"><%= err.stack %></p>
+    <% } %>
+
     <hr />
-    <p class="error-data-sub">Another Message HERE</p>
+    <div class="show-buttons">
+      <a href="/spots">Back to All</a>
+    </div>
   </div>
 </div>

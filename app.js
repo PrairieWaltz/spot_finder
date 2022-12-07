@@ -17,6 +17,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 
+const mongoSanitize = require('express-mongo-sanitize');
+
 const userRoutes = require('./routes/users');
 const spotRoutes = require('./routes/spots');
 const reviewRoutes = require('./routes/reviews');
@@ -49,13 +51,18 @@ app.use(methodOverride('_method'));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/Images', express.static('Images'));
 
+// Mongo-Sanitize
+app.use(mongoSanitize());
+
 // SESSION
 const sessionConfig = {
+  name: 'popshuvonly',
   secret: 'simplesecret',
   resave: false,
   saveUninitialized: true,
   cookie: {
     httpOnly: true,
+    // secure: true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 14,
     maxAge: 1000 * 60 * 60 * 24 * 14,
   },
@@ -73,7 +80,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // FLASH Middlewear
 app.use((req, res, next) => {
-  // console.log(req.session);
+  console.log(req.query);
   res.locals.currentUser = req.user;
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
