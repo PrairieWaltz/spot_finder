@@ -16,6 +16,7 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
+const helmet = require('helmet');
 
 const mongoSanitize = require('express-mongo-sanitize');
 
@@ -69,6 +70,55 @@ const sessionConfig = {
 };
 app.use(session(sessionConfig));
 app.use(flash());
+// app.use(helmet());
+
+const scriptSrcUrls = [
+  'https://api.tiles.mapbox.com/',
+  'https://api.mapbox.com/',
+  'https://cdnjs.cloudflare.com/',
+  'https://cdn.jsdelivr.net',
+  'https://kit.fontawesome.com/',
+  'https://kit.fontawesome.com/8a592e980d.js',
+  'https://res.cloudinary.com/dxgtndosr/',
+];
+const styleSrcUrls = [
+  'https://kit.fontawesome.com/8a592e980d.js',
+  'https://kit-free.fontawesome.com/',
+  'https://use.fontawesome.com/',
+  'https://api.mapbox.com/',
+  'https://api.tiles.mapbox.com/',
+  'https://fonts.googleapis.com/',
+  'https://fonts.gstatic.com',
+  'https://use.fontawesome.com/',
+  'https://cdn.jsdelivr.net',
+];
+const connectSrcUrls = [
+  'https://api.mapbox.com/',
+  'https://a.tiles.mapbox.com/',
+  'https://b.tiles.mapbox.com/',
+  'https://events.mapbox.com/',
+];
+const fontSrcUrls = ['https://res.cloudinary.com/dxgtndosr/'];
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: [],
+      connectSrc: ["'self'", ...connectSrcUrls],
+      scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+      styleSrc: ["'self'", ...styleSrcUrls],
+      workerSrc: ["'self'", 'blob:'],
+      childSrc: ["'self'", 'blob:'],
+      objectSrc: [],
+      imgSrc: [
+        "'self'",
+        "'blob:'",
+        "'data:'",
+        'https://res.cloudinary.com/dxgtndosr/',
+      ],
+      fontSrc: ["'self'", 'fonts.googleapis.com', 'fonts.gstatic.com'],
+    },
+  })
+);
 
 // PASSPORT Config
 app.use(passport.initialize());
