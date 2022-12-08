@@ -23,10 +23,10 @@ const mongoSanitize = require('express-mongo-sanitize');
 const userRoutes = require('./routes/users');
 const spotRoutes = require('./routes/spots');
 const reviewRoutes = require('./routes/reviews');
-const MongoDBStore = require('connect-mongo');
-const dbUrl = 'mongodb://localhost:27017/spot-finder';
 
-// 'mongodb://localhost:27017/spot-finder'
+const MongoDBStore = require('connect-mongo');
+
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/spot-finder';
 
 // MONGOOSE
 mongoose.connect(dbUrl, {
@@ -59,10 +59,12 @@ app.use('/Images', express.static('Images'));
 // Mongo-Sanitize
 app.use(mongoSanitize());
 
+const secret = process.env.SECRET || 'simplesecret';
+
 // new MONGO DB STORE
 const store = new MongoDBStore({
   mongoUrl: dbUrl,
-  secret: 'simplesecret',
+  secret,
   touchAfter: 24 * 60 * 60,
 });
 
@@ -74,7 +76,7 @@ store.on('error', function (e) {
 const sessionConfig = {
   store,
   name: 'popshuvonly',
-  secret: 'simplesecret',
+  secret,
   resave: false,
   saveUninitialized: true,
   cookie: {
