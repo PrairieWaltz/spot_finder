@@ -72,24 +72,21 @@ app.use(session(sessionConfig));
 app.use(flash());
 // app.use(helmet());
 
+// HELMET config set-up
 const scriptSrcUrls = [
   'https://api.tiles.mapbox.com/',
   'https://api.mapbox.com/',
   'https://cdnjs.cloudflare.com/',
   'https://cdn.jsdelivr.net',
-  'https://kit.fontawesome.com/',
-  'https://kit.fontawesome.com/8a592e980d.js',
   'https://res.cloudinary.com/dxgtndosr/',
+  'https://kit.fontawesome.com/8a592e980d.js',
 ];
 const styleSrcUrls = [
-  'https://kit.fontawesome.com/8a592e980d.js',
-  'https://kit-free.fontawesome.com/',
-  'https://use.fontawesome.com/',
+  'https://kit-free.fontawesome.com/releases/latest/css/free.min.css',
   'https://api.mapbox.com/',
   'https://api.tiles.mapbox.com/',
   'https://fonts.googleapis.com/',
   'https://fonts.gstatic.com',
-  'https://use.fontawesome.com/',
   'https://cdn.jsdelivr.net',
 ];
 const connectSrcUrls = [
@@ -98,13 +95,13 @@ const connectSrcUrls = [
   'https://b.tiles.mapbox.com/',
   'https://events.mapbox.com/',
 ];
-const fontSrcUrls = ['https://res.cloudinary.com/dxgtndosr/'];
+const fontSrcUrls = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: [],
       connectSrc: ["'self'", ...connectSrcUrls],
-      scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+      scriptSrc: ["'self'", "'unsafe-inline'", ...scriptSrcUrls],
       styleSrc: ["'self'", ...styleSrcUrls],
       workerSrc: ["'self'", 'blob:'],
       childSrc: ["'self'", 'blob:'],
@@ -115,7 +112,7 @@ app.use(
         "'data:'",
         'https://res.cloudinary.com/dxgtndosr/',
       ],
-      fontSrc: ["'self'", 'fonts.googleapis.com', 'fonts.gstatic.com'],
+      fontSrc: ["'self'", ...fontSrcUrls],
     },
   })
 );
@@ -145,6 +142,11 @@ app.use('/spots/:id/reviews', reviewRoutes);
 // HOME Route
 app.get('/', (req, res) => {
   res.render('home');
+});
+
+// CONTACT Route
+app.get('/contact', (req, res) => {
+  res.render('contact');
 });
 
 // GENERAL UNKNOWN ROUTE ERROR HANDLING

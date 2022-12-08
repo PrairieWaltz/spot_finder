@@ -13,8 +13,9 @@ module.exports.registerUser = async (req, res, next) => {
     const user = new User({ email, username });
     const rergisteredUser = await User.register(user, password);
     req.login(rergisteredUser, err => {
+      const userName = req.body.username;
       if (err) return next(err);
-      req.flash('success', 'Welcome to SpotFinder');
+      req.flash('success', `Welcome to SpotFinder ${userName}!`);
       res.redirect('/spots');
     });
   } catch (e) {
@@ -28,18 +29,20 @@ module.exports.renderLoginForm = (req, res) => {
 };
 
 module.exports.userLogin = (req, res) => {
-  req.flash('success', 'Welcome Back!');
+  const userName = req.body.username;
+  req.flash('success', `Welcome Back ${userName}!`);
   const redirectUrl = req.session.returnTo;
   delete req.session.returnTo;
   res.redirect(redirectUrl || '/spots');
 };
 
 module.exports.logoutRoute = (req, res, next) => {
+  const userName = req.body.username;
   req.logout(err => {
     if (err) {
       return next(err);
     }
-    req.flash('success', 'Goodbye');
+    req.flash('success', `Go skate...your work here is done`);
     res.redirect('/');
   });
 };

@@ -11,7 +11,7 @@
           <i class="fa-brands fa-twitter"></i>
         </a>
       </li>
-      <li>|</li>
+      <!-- <li>|</li> -->
       <% if(!currentUser) {%>
       <li>
         <a href="/spots">Lurk</a>
@@ -20,12 +20,19 @@
         <a href="/login">Sign-In</a>
       </li>
       <li>
-        <a href="">Contact</a>
+        <a href="/register">Sign-Up</a>
+      </li>
+      <li>
+        <a href="/contact">Contact</a>
       </li>
       <% } else {%>
       <li>
-        <a href="">Contact</a>
+        <a href="spots/new">New</a>
       </li>
+      <li>
+        <a href="/contact">Contact</a>
+      </li>
+      <li>|</li>
       <li>
         <a href="/logout">LogOut</a>
       </li>
