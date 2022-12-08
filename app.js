@@ -23,9 +23,13 @@ const mongoSanitize = require('express-mongo-sanitize');
 const userRoutes = require('./routes/users');
 const spotRoutes = require('./routes/spots');
 const reviewRoutes = require('./routes/reviews');
+const MongoDBStore = require('connect-mongo');
+const dbUrl = 'mongodb://localhost:27017/spot-finder';
+
+// 'mongodb://localhost:27017/spot-finder'
 
 // MONGOOSE
-mongoose.connect('mongodb://localhost:27017/spot-finder', {
+mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -55,8 +59,20 @@ app.use('/Images', express.static('Images'));
 // Mongo-Sanitize
 app.use(mongoSanitize());
 
+// new MONGO DB STORE
+const store = new MongoDBStore({
+  mongoUrl: dbUrl,
+  secret: 'simplesecret',
+  touchAfter: 24 * 60 * 60,
+});
+
+store.on('error', function (e) {
+  console.log('Session Store Error', e);
+});
+
 // SESSION
 const sessionConfig = {
+  store,
   name: 'popshuvonly',
   secret: 'simplesecret',
   resave: false,
@@ -70,7 +86,6 @@ const sessionConfig = {
 };
 app.use(session(sessionConfig));
 app.use(flash());
-// app.use(helmet());
 
 // HELMET config set-up
 const scriptSrcUrls = [
