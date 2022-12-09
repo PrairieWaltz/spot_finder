@@ -288,6 +288,11 @@ footer h3 {
 }
 
 /* INDEX CONTAINER DESIGN */
+
+.index-list ul {
+  transform: rotate(180deg);
+}
+
 .index-list ul li {
   margin: 1rem;
   background: rgba(255, 254, 253, 0.5);
@@ -295,6 +300,7 @@ footer h3 {
   border-radius: 0.25rem;
   padding: 1rem 1.5rem;
   list-style: none;
+  transform: rotate(-180deg);
 }
 
 /* SHOW LINK DESIGN */
