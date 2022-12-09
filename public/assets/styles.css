@@ -290,7 +290,8 @@ footer h3 {
 /* INDEX CONTAINER DESIGN */
 
 .index-list ul {
-  transform: rotate(180deg);
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .index-list ul li {
@@ -300,7 +301,6 @@ footer h3 {
   border-radius: 0.25rem;
   padding: 1rem 1.5rem;
   list-style: none;
-  transform: rotate(-180deg);
 }
 
 /* SHOW LINK DESIGN */
