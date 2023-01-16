@@ -10,7 +10,6 @@
       <div class="index-text">
         <div class="index-text-main">
           <h1>Newest Spots</h1>
-          <hr />
         </div>
         <div class="add-button">
           <h2 class="add-button1"><a href="/spots/new">Add a Spot</a></h2>
@@ -37,13 +36,15 @@
             <h2><%= spot.title %></h2>
             <h6 class="index-description"><%= spot.description %></h6>
             <div class="loc-btn">
-              <div class="index-btn">
-                <p class="index-location">
-                  <%= spot.location %> -
-                  <a href="/spots/<%= spot._id %>">ViewSpot</a>
-                </p>
-              </div>
+              <p class="index-location">
+                <%= spot.location %> -
+                <div class="index-btn">
+                  <a class="index-view-btn" href="/spots/<%= spot._id %>"
+                 >ViewSpot</a
+                  >
             </div>
+            </p>
+          </div>
           </li>
 
           <% } %>
