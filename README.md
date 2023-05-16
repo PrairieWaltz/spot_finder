@@ -46,7 +46,7 @@ To run locally you will need MongoDB for testing. Mongosh was used for all devel
 - `#EAE2B7`
 
 ## App Status
-LIVE @ http://.spotfinder.herokuapp.com
+LIVE @ http://spotfinder.herokuapp.com
 
 ## Estimated Publish Date
 12.15.22
@@ -70,6 +70,6 @@ LIVE @ http://.spotfinder.herokuapp.com
 - 12.05.22 -- Maps added to INDEX and SHOW pages. Connection to populate db data working. PopUps on Single Spot markers working. Cluster map for INDEX working. Need to               style colors and grouping but overall looking OK. Just need to do a final refactor and should have a working Beta up and live ahead of schedule. 
 - 12.06.22 -- Added dependencies to deal with xss, CSP and Mongo injection. All routes covered with basic security. Need to hunt for leaks. Ready to prep for initial                 deploy. 
 - 12.07.22 -- Needs some refactoring but overall the backend is solid and working. Code is readable to me for whatever that's worth. All styles need to be completely                 redone. There are some leaks but no massive bugs I can find. Will deploy in the AM to make styles collab easier with others. Using paid Dyno but free                   AtlasDB. Nothing should come close to moxing out the space allotted. Fingers crossed.  
-- 12.09.22 -- v1 LIVE @ www.spotfinder.herokuapp.com
+- 12.09.22 -- v1 LIVE @ http://spotfinder.herokuapp.com
               All basic functionality in place and working. Some small bugs popping up but nothing drastic. Looks like shit, needs a total revamp. Will start mobile 
               first re-design in early Jan. 
