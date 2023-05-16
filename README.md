@@ -46,7 +46,7 @@ To run locally you will need MongoDB for testing. Mongosh was used for all devel
 - `#EAE2B7`
 
 ## App Status
-LIVE @ www.spotfinder.herokuapp.com
+LIVE @ http://.spotfinder.herokuapp.com
 
 ## Estimated Publish Date
 12.15.22
